@@ -71,7 +71,7 @@ const Header = () => {
               <FontAwesomeIcon icon={faLocationDot} />
               <span>Nairobi</span>
             </div>
-            <div>Today ({moment().format('LLL')})</div>
+            <div>Today ({moment().format("LLL")})</div>
           </div>
           {/* Right */}
           <div className={`flex items-center gap-1 text-[.85rem]`}>
@@ -104,16 +104,58 @@ const Header = () => {
         </div>
       </div>
       {/* Second level navigation */}
-      <div className={"flex max-w-7xl mx-auto"} ref={header2Ref}>
+      <div
+        className={
+          "flex max-w-7xl mx-auto justify-between items-center w-full py-2 bg-white"
+        }
+        ref={header2Ref}
+      >
         <div className={``}>
-          <h2>loans.co.ke</h2>
+          <h2 className="text-4xl font-extrabold uppercase text-purple-600">
+            loans.co.ke
+          </h2>
         </div>
-        <div className={``}></div>
+        <div className={`text-purple-600`}>
+          <h2>Workout your financial stats</h2>
+        </div>
       </div>
       {/* Third level navigation */}
-      <div className={`flex max-w-7xl mx-auto`} ref={header3Ref}>
-        <div className={``}>
-          <h1>Header 3</h1>
+      <div className="w-full bg-yellow-500 px-2 text-white">
+        <div className={`flex max-w-7xl mx-auto w-full`} ref={header3Ref}>
+          <nav className="w-full flex justify-between gap-2 items-center">
+            <ul className="flex gap-2 flex-1 py-2">
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                Home
+              </li>
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                World news
+              </li>
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                National
+              </li>
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                Financial
+              </li>
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                Entertainment
+              </li>
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                Lifestyle
+              </li>
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                Technology
+              </li>
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                Travel
+              </li>
+              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                Sports
+              </li>
+            </ul>
+            <div>
+              <FontAwesomeIcon icon={faSearch} />
+            </div>
+          </nav>
         </div>
       </div>
     </div>
