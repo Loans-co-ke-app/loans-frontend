@@ -37,7 +37,7 @@ const Homepage = () => {
             alt=""
             className="absolute h-full w-full object-cover -z-[1]"
           />
-          <div className="h-full w-full z-10 bg-slate-600 bg-opacity-20 p-2 flex flex-col justify-between text-white">
+          <div className="h-full w-full z-10 bg-slate-600 bg-opacity-20 p-2 flex flex-col justify-between text-white hover:bg-gradient-to-t hover:from-gray-400 hover:via-gray-400/25 hover:to-purple-gray-400/25 transition duration-500">
             {/* Actions */}
             <div className="w-full flex items-center justify-between">
               {/* left */}

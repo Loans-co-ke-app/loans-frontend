@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer";
 import Header from "./Header";
 
 const BaseLayout = ({ children }: { children: JSX.Element }) => {
@@ -8,7 +9,7 @@ const BaseLayout = ({ children }: { children: JSX.Element }) => {
       <div className="max-w-7xl mx-auto min-h-screen">
         <div className="w-full">{children}</div>
       </div>
-      <footer>Footer</footer>
+      <Footer/>
     </div>
   );
 };
