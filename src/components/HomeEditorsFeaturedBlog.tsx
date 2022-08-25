@@ -1,4 +1,4 @@
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
@@ -31,8 +31,8 @@ const HomeEditorsFeaturedBlog = ({
             </span>
           </div>
           {/* right */}
-          <div className="text-red-500 bg-gray-200 h-fit px-1 rounded-md">
-            <FontAwesomeIcon icon={faHeart} />
+          <div className="text-gray-500 bg-gray-200 h-fit px-1 rounded-md">
+            <FontAwesomeIcon icon={faBookmark} />
           </div>
         </div>
         {/* about post */}

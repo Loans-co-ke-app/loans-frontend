@@ -40,7 +40,7 @@ const Footer = () => {
             <br />
             <Link
               to={"/"}
-              className="text-blue-400 flex items-center gap-2 p-1 hover:text-red-500 transition duration-300 ease-in text-[.8rem]"
+              className="text-blue-400 flex items-center gap-2 p-1 hover:text-gray-500 transition duration-300 ease-in text-[.8rem]"
             >
               Read more <FontAwesomeIcon icon={faChevronRight} />
             </Link>
