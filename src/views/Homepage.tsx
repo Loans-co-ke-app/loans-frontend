@@ -1,4 +1,4 @@
-import { faHeart, faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faBookMark, faHouse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
