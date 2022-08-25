@@ -1,4 +1,4 @@
-import { faHouse, faBookMark } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
@@ -53,7 +53,7 @@ const HomeFeaturedPost = ({ posts }: { posts: PropsTypes[] }) => {
               </div>
               {/* right */}
               <div className="text-gray-500 bg-gray-200 h-fit px-1 rounded-md">
-                <FontAwesomeIcon icon={faBookMark} />
+                <FontAwesomeIcon icon={faBookmark} />
               </div>
             </div>
             {/* about post */}
