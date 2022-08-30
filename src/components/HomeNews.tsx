@@ -187,7 +187,7 @@ const HomeNews = () => {
           <ul className="flex flex-col gap-5 py-1">
             {posts.slice(0, 3).map((item, index) => (
               <li className="flex items-center gap-3">
-                <div className="h-24 w-24 relative">
+                <div className="w-full h-24 md:w-24 relative">
                   <img
                     src={item.image}
                     alt=""

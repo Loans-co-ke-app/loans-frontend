@@ -1,13 +1,9 @@
 import React from "react";
 import {
-  faBars,
+  faChevronDown,
   faFeed,
   faLanguage,
-  faLocation,
   faLocationDot,
-  faLocationPin,
-  faMapLocationDot,
-  faPhone,
   faSearch,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -19,6 +15,8 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import moment from "moment";
+import useNavLinks from "../hooks/useNavLinks";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const header1Ref = React.useRef<HTMLDivElement>(null);
@@ -26,10 +24,12 @@ const Header = () => {
   const header3Ref = React.useRef<HTMLDivElement>(null);
   const [scrolledHeight, setScrolledHeight] = React.useState<number>(0);
   const [isScrolled, setIsScrolled] = React.useState<boolean>(false);
+  const { navLinks: navItems } = useNavLinks();
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
       setScrolledHeight(scrollTop);
       if (scrollTop >= 200) {
         setIsScrolled(true);
@@ -58,12 +58,9 @@ const Header = () => {
 
   return (
     <>
-      <div className={`flex flex-col gap-2 z-[1000]`}   ref={header1Ref}>
+      <div className={`flex flex-col gap-2 z-[1000]`} ref={header1Ref}>
         {/* First level navigation */}
-        <div
-          className={`flex bg-gray-700 text-[.85rem] py-2 w-full`}
-        
-        >
+        <div className={`flex bg-gray-700 text-[.85rem] py-2 w-full`}>
           <div
             className={
               "w-full max-w-7xl mx-auto flex justify-between items-center p-2 text-white"
@@ -130,35 +127,29 @@ const Header = () => {
         ref={header3Ref}
       >
         <div className="w-full max-w-7xl mx-auto  px-2 text-white top-0">
-          <nav className="w-full flex justify-between gap-2 items-center">
+          <nav className="hidden w-full md:flex justify-between gap-2 items-center">
             <ul className="flex gap-2 flex-1 py-2">
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                Home
-              </li>
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                World news
-              </li>
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                National
-              </li>
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                Financial
-              </li>
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                Entertainment
-              </li>
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                Lifestyle
-              </li>
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                Technology
-              </li>
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                Travel
-              </li>
-              <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
-                Sports
-              </li>
+              {navItems.map((item, index) =>
+                item.hasChildren ? (
+                  <li key={index} className="basis-1 shrink-0 grow text-center py-2 group hover:border-b relative">
+                    <button className="flex items-center justify-between gap-2">
+                      <span className="uppercase">{item.name}</span>
+                      <FontAwesomeIcon icon={faChevronDown} className="text-[.85rem]"/>
+                    </button>
+                    <ul className="hidden flex-col gap-2 absolute group-hover:flex border top-[calc(100%_+_2px)] bg-white w-full z-10 rounded-sm">
+                      {item.children.map((child) => (
+                        <li key={child.name} className="flex items-center px-2 py-2 text-purple-600 text-left hover:bg-orange-300">
+                         <Link to={child.url} >{child.name}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ) : (
+                  <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                    <Link to={item.url}>{item.name}</Link>
+                  </li>
+                )
+              )}
             </ul>
             <div>
               <FontAwesomeIcon icon={faSearch} />
