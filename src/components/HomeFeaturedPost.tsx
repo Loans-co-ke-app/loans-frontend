@@ -14,7 +14,7 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
   const fetchFeaturedPost = async () => {
     const response = await publicAxios.get('/article_featured/')
     setFeaturedArticle(response.data[0])
-    
+
   }
   const navigate = useNavigate()
   const navigateUrl = (url: string) => {
@@ -60,9 +60,11 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
             <div className="w-full flex items-center justify-between">
               {/* left */}
               <div>
-                <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
-                  transport
-                </span>
+                {featuredArticle.tags?.split(",").map((tag) => (
+                  <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
+                    {tag}
+                  </span>
+                ))}
               </div>
               {/* right */}
               <div className="text-gray-500 bg-gray-200 h-fit px-1 rounded-md">
