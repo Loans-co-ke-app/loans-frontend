@@ -1,5 +1,6 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import BaseLayout from "../components/BaseLayout";
+import TopScroll from "../components/TopScroll";
 import Homepage from "../views/Homepage";
 import SinglePost from "../views/SinglePost";
 
@@ -20,7 +21,7 @@ const AppRoutes: IPages = {
     options: {},
     hasChildren: false,
   },
-  singleBlogPost:{
+  singleBlogPost: {
     name: "Single Blog Post",
     path: "/post/:slug",
     component: BaseLayout({ children: <SinglePost /> }),
@@ -32,6 +33,7 @@ export default function AppRouter() {
   return (
     <>
       <HashRouter>
+        <TopScroll />
         <Routes>
           {Object.keys(AppRoutes).map((key: string) => {
             const { path, component } = AppRoutes[key];
