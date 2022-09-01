@@ -25,9 +25,11 @@ const HomeEditorsFeaturedBlog = (post: IPostEntity) => {
         <div className="w-full flex items-center justify-between">
           {/* left */}
           <div>
-            <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
-              transport
-            </span>
+            {post.tags?.split(",").map((tag) => (
+              <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
+                {tag}
+              </span>
+            ))}
           </div>
           {/* right */}
           <div className="text-gray-500 bg-gray-200 h-fit px-1 rounded-md">

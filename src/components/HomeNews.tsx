@@ -17,7 +17,7 @@ import HtmlDecoder from "./HtmlDecoder";
 const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
   const [leftPosts, setLeftPosts] = React.useState<IPostEntity[]>([]);
   const [rightPosts, setRightPosts] = React.useState<IPostEntity[]>([]);
- 
+
 
   React.useEffect(() => {
     setLeftPosts(posts!.slice(0, 2));
@@ -54,9 +54,12 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                         <div className="w-full flex items-center justify-between">
                           {/* left */}
                           <div>
-                            <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
-                              transport
-                            </span>
+                            {post.tags?.split(",").map((tag) => (
+                              <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
+                                {tag}
+                              </span>
+                            ))}
+
                           </div>
                           {/* right */}
                           <div className="text-gray-500 bg-gray-200 h-fit px-1 rounded-md">
@@ -74,7 +77,7 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                       </div>
                     </div>
                     <div>
-                      <p>{HtmlDecoder({html:post.article_body.slice(0,200)})}</p>
+                      <p>{HtmlDecoder({ html: post.article_body.slice(0, 200) })}</p>
                       <button className="py-2 text-purple-600 flex items-center gap-2 hover:text-red-600 text-[.85rem]">
                         <span> Continue reading </span>
                         <FontAwesomeIcon
@@ -116,9 +119,11 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                         <div className="w-full flex items-center justify-between">
                           {/* left */}
                           <div>
-                            <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
-                              transport
-                            </span>
+                          {post.tags?.split(",").map((tag) => (
+                              <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
+                                {tag}
+                              </span>
+                            ))}
                           </div>
                           {/* right */}
                           <div className="text-gray-500 bg-gray-200 h-fit px-1 rounded-md">
@@ -136,7 +141,7 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                       </div>
                     </div>
                     <div>
-                      <p>{HtmlDecoder({html:post.article_body.slice(0,200)})}</p>
+                      <p>{HtmlDecoder({ html: post.article_body.slice(0, 200) })}</p>
                       <button className="py-2 text-purple-600 flex items-center gap-2 hover:text-red-600 text-[.85rem]">
                         <span> Continue reading </span>
                         <FontAwesomeIcon
@@ -207,7 +212,7 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                 <div>
                   <div className="flex justify-between items-center text-[.85rem] gap-3">
                     <span>{item.authors.first_name}</span>
-                    <span>{moment().format("LL")}</span>
+                    <span>{moment(item.publish_date).format("LL")}</span>
                   </div>
                   <div>
                     <h2 className="text-purple-600 font-bold">{item.article_title}</h2>
