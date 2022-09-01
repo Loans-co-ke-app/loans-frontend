@@ -67,7 +67,7 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                         <div>
                           <div className="text-[.75rem] flex gap-2">
                             <span>By {post.authors.first_name}</span>
-                            <span>On {moment().format("LL")}</span>
+                            <span>On {moment(post.publish_date).format("LL")}</span>
                           </div>
                           <h3 className="text-2xl ">{post.article_title}</h3>
                         </div>
@@ -129,7 +129,7 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                         <div>
                           <div className="text-[.75rem] flex gap-2">
                             <span>By {post.authors.first_name}</span>
-                            <span>On {moment().format("LL")}</span>
+                            <span>On {moment(post.publish_date).format("LL")}</span>
                           </div>
                           <h3 className="text-2xl ">{post.article_title}</h3>
                         </div>

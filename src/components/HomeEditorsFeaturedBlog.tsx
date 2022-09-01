@@ -37,7 +37,7 @@ const HomeEditorsFeaturedBlog = (post: IPostEntity) => {
         {/* about post */}
         <div>
           <div className="text-[.75rem] flex gap-2">
-            <span>By {post.authors.first_name} {post.authors.last_name}</span><span>On {moment().format('LL')}</span>
+            <span>By {post.authors.first_name} {post.authors.last_name}</span><span>On {moment(post.publish_date).format('LL')}</span>
           </div>
           <h3 className="text-2xl ">{post.article_title}</h3>
         </div>

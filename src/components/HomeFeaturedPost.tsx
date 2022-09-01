@@ -73,7 +73,7 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
             <div>
               <div className="flex gap-2">
                 <span>By {featuredArticle!.authors?.first_name}</span>
-                <span>On {moment().format("LL")}</span>
+                <span>On {moment(featuredArticle.publish_date).format("LL")}</span>
               </div>
               <h3 className="text-4xl ">{featuredArticle!.article_title}</h3>
             </div>
