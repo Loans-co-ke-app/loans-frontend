@@ -2,6 +2,8 @@ import { faHouse, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IPostEntity } from "../interfaces/Post";
 import publicAxios from "../utils/requests";
 import HomeEditorsFeaturedBlog from "./HomeEditorsFeaturedBlog";
@@ -12,9 +14,11 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
   const fetchFeaturedPost = async () => {
     const response = await publicAxios.get('/article_featured/')
     setFeaturedArticle(response.data[0])
-    console.log(response.data);
-    console.log(featuredArticle,"Featured Article");
     
+  }
+  const navigate = useNavigate()
+  const navigateUrl = (url: string) => {
+    navigate(url)
   }
   React.useEffect(() => {
     fetchFeaturedPost()
@@ -45,7 +49,7 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
         </ul>
         {/* end of left section */}
         {/*  Featured image*/}
-        <div className="relative w-full md:w-6/12 h-[24.5rem]">
+        <Link to={`post/${featuredArticle.slug}`} className="relative w-full md:w-6/12 h-[24.5rem]">
           <img
             src={featuredArticle?.featured_image}
             alt=""
@@ -74,7 +78,7 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
               <h3 className="text-4xl ">{featuredArticle!.article_title}</h3>
             </div>
           </div>
-        </div>
+        </Link>
         {/* right section */}
 
         <ul className="w-full md:w-3/12 flex flex-col gap-2 relative items-center h-full">
