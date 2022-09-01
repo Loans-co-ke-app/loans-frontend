@@ -2,6 +2,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import BaseLayout from "../components/BaseLayout";
 import TopScroll from "../components/TopScroll";
 import Homepage from "../views/Homepage";
+import NotFound from "../views/NotFound";
 import SinglePost from "../views/SinglePost";
 
 interface IPages {
@@ -26,7 +27,14 @@ const AppRoutes: IPages = {
     path: "/post/:slug",
     component: BaseLayout({ children: <SinglePost /> }),
     options: {},
-  }
+  },
+  notFound: {
+    name: "404",
+    path: "*",
+    component: BaseLayout({ children: <NotFound /> }),
+    options: {},
+    hasChildren: false,
+  },
 };
 
 export default function AppRouter() {
