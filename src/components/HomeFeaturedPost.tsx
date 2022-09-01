@@ -2,15 +2,24 @@ import { faHouse, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
+import { IPostEntity } from "../interfaces/Post";
+import publicAxios from "../utils/requests";
 import HomeEditorsFeaturedBlog from "./HomeEditorsFeaturedBlog";
 
-type PropsTypes = {
-  title: string;
-  image: string;
-  body: string;
-  author: any
-};
-const HomeFeaturedPost = ({ posts }: { posts: PropsTypes[] }) => {
+
+const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
+  const [featuredArticle, setFeaturedArticle] = React.useState<IPostEntity>({ article_body: '', article_company: '', article_title: '', featured: false, publish_date: '', authors: { first_name: '', last_name: '', id: 1 }, featured_image: '', slug: '' });
+  const fetchFeaturedPost = async () => {
+    const response = await publicAxios.get('/article_featured/')
+    setFeaturedArticle(response.data[0])
+    console.log(response.data);
+    console.log(featuredArticle,"Featured Article");
+    
+  }
+  React.useEffect(() => {
+    fetchFeaturedPost()
+  }, [])
+
   return (
     <div>
       {/* Bread crumb */}
@@ -30,15 +39,15 @@ const HomeFeaturedPost = ({ posts }: { posts: PropsTypes[] }) => {
       <div className="flex flex-col md:flex-row gap-2 p-2">
         {/* left section */}
         <ul className="w-full md:w-3/12 flex flex-col gap-2 relative">
-          {posts.slice(0, 2).map((item, index) => {
-            return <HomeEditorsFeaturedBlog index={index} {...item} />;
+          {posts!.slice(0, 2).map((item, index) => {
+            return <HomeEditorsFeaturedBlog {...item} key={index} />;
           })}
         </ul>
         {/* end of left section */}
         {/*  Featured image*/}
         <div className="relative w-full md:w-6/12 h-[24.5rem]">
           <img
-            src={posts[3].image}
+            src={featuredArticle?.featured_image}
             alt=""
             className="absolute h-full w-full object-cover -z-[1]"
           />
@@ -59,20 +68,20 @@ const HomeFeaturedPost = ({ posts }: { posts: PropsTypes[] }) => {
             {/* about post */}
             <div>
               <div className="flex gap-2">
-                <span>By {posts[3].author.username}</span>
+                <span>By {featuredArticle!.authors?.first_name}</span>
                 <span>On {moment().format("LL")}</span>
               </div>
-              <h3 className="text-4xl ">{posts[3].title}</h3>
+              <h3 className="text-4xl ">{featuredArticle!.article_title}</h3>
             </div>
           </div>
         </div>
         {/* right section */}
 
         <ul className="w-full md:w-3/12 flex flex-col gap-2 relative items-center h-full">
-          {posts
+          {posts!
             .slice(posts.length - 3, posts.length - 1)
             .map((item, index) => {
-              return <HomeEditorsFeaturedBlog index={index} {...item} />;
+              return <HomeEditorsFeaturedBlog  {...item} key={index} />;
             })}
         </ul>
       </div>

@@ -145,7 +145,7 @@ const Header = () => {
                     </ul>
                   </li>
                 ) : (
-                  <li className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                  <li key={item.name} className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
                     <Link to={item.url}>{item.name}</Link>
                   </li>
                 )

@@ -6,12 +6,14 @@ specifiers:
   '@fortawesome/free-regular-svg-icons': ^6.1.1
   '@fortawesome/free-solid-svg-icons': ^6.1.1
   '@fortawesome/react-fontawesome': ^0.2.0
+  '@types/he': ^1.1.2
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@types/react-router-dom': ^5.3.3
   '@vitejs/plugin-react': ^2.0.1
   autoprefixer: ^10.4.7
   axios: ^0.27.2
+  he: ^1.2.0
   moment: ^2.29.4
   moment-timezone: ^0.5.35
   postcss: ^8.4.14
@@ -29,6 +31,7 @@ dependencies:
   '@fortawesome/free-solid-svg-icons': 6.1.2
   '@fortawesome/react-fontawesome': 0.2.0_tebjjym7ugcdduvdrfbg7ugwxq
   axios: 0.27.2
+  he: 1.2.0
   moment: 2.29.4
   moment-timezone: 0.5.35
   react: 18.2.0
@@ -36,6 +39,7 @@ dependencies:
   react-router-dom: 6.3.0_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
+  '@types/he': 1.1.2
   '@types/react': 18.0.17
   '@types/react-dom': 18.0.6
   '@types/react-router-dom': 5.3.3
@@ -437,6 +441,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+    dev: true
+
+  /@types/he/1.1.2:
+    resolution: {integrity: sha512-kSJPcLO1x+oolc0R89pUl2kozldQ/fVQ1C1p5mp8fPoLdF/ZcBvckaTC2M8xXh3GYendXvCpy5m/a2eSbfgNgw==}
     dev: true
 
   /@types/history/4.7.11:
@@ -1014,6 +1022,11 @@ packages:
     dependencies:
       function-bind: 1.1.1
     dev: true
+
+  /he/1.2.0:
+    resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
+    hasBin: true
+    dev: false
 
   /history/5.3.0:
     resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==}

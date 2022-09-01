@@ -1,6 +1,7 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import BaseLayout from "../components/BaseLayout";
 import Homepage from "../views/Homepage";
+import SinglePost from "../views/SinglePost";
 
 interface IPages {
   [key: string]: {
@@ -19,6 +20,12 @@ const AppRoutes: IPages = {
     options: {},
     hasChildren: false,
   },
+  singleBlogPost:{
+    name: "Single Blog Post",
+    path: "/post/:slug",
+    component: BaseLayout({ children: <SinglePost /> }),
+    options: {},
+  }
 };
 
 export default function AppRouter() {
