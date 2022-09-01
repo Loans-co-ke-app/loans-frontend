@@ -1,4 +1,5 @@
-import { faArrowLeft, faArrowRight, faBookmark, faChevronRight, faEnvelopeOpen, faNewspaper } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faArrowLeft, faArrowRight, faBookmark, faChevronRight, faEnvelopeOpen, faFeed, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import React from 'react'
@@ -8,6 +9,7 @@ import BASE_URL from '../api/api';
 import HtmlDecoder from '../components/HtmlDecoder';
 import { IPostEntity } from '../interfaces/Post';
 import publicAxios from '../utils/requests';
+import userAvatar from './../assets/user.svg';
 
 const SinglePost = () => {
     const [loading, setLoading] = React.useState<boolean>(true);
@@ -50,8 +52,28 @@ const SinglePost = () => {
                     <span>{post.authors.first_name} {post.authors.last_name}</span> <span>{moment(post.publish_date).format("LL")}</span>
                 </div>
                 <h1 className='text-3xl py-2 text-purple-600 font-bold'>{post.article_title}</h1>
-                <div>
+                <div className='py-3'>
                     {HtmlDecoder({ html: post.article_body })}
+                </div>
+                <div className='border my-3 flex gap-2'>
+                    <div className='w-2/5 h-full bg-gray-300 p-4'>
+                        <img src={userAvatar} alt="" className='w-full h-1/2'/>
+                        <div className='text-[.85rem]'>
+                            <span>{`${post.authors.first_name} ${post.authors.last_name}`}</span>
+                        </div>
+                    </div>
+                    <div className='p-4'>
+                        <h1 className='text-2xl py-3'>About the author</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quos sapiente praesentium sint. Voluptas, optio ducimus modi officia sunt vel. Quisquam sed nemo nam est laboriosam placeat perferendis soluta illum.
+                        </p>
+                        <div className='py-2 flex items-center gap-2'>
+                            <FontAwesomeIcon icon={faFacebook} color="blue"/>
+                            <FontAwesomeIcon icon={faTwitter} color="blue" />
+                            <FontAwesomeIcon icon={faFeed} color="orange" />
+                            <FontAwesomeIcon icon={faGoogle} />
+                        </div>
+                    </div>
                 </div>
             </div>
             <div>

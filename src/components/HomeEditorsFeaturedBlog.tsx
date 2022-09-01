@@ -2,11 +2,19 @@ import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import BASE_URL from "../api/api";
 import { IPostEntity } from "../interfaces/Post";
 
 const HomeEditorsFeaturedBlog = (post: IPostEntity) => {
+  const navigate = useNavigate()
+  const navigateUrl = (url: string) => {
+    navigate('post' + '/' + url)
+  }
   return (
-    <li key={post.slug} className="relative shadow-md h-48">
+    <Link to={`/post/${post.slug}`} key={post.slug} className="relative shadow-md h-48 cursor-pointer" onClick={e => {
+    }}>
       <img
         src={post.featured_image}
         alt=""
@@ -34,7 +42,7 @@ const HomeEditorsFeaturedBlog = (post: IPostEntity) => {
           <h3 className="text-2xl ">{post.article_title}</h3>
         </div>
       </div>
-    </li>
+    </Link>
   );
 };
 

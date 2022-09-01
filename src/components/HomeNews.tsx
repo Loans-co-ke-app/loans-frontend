@@ -10,15 +10,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import posts from "../data/blogs.json";
 import React from "react";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IPostEntity } from "../interfaces/Post";
 import HtmlDecoder from "./HtmlDecoder";
 
 const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
   const [leftPosts, setLeftPosts] = React.useState<IPostEntity[]>([]);
   const [rightPosts, setRightPosts] = React.useState<IPostEntity[]>([]);
-  console.log(posts,"Posts");
-  
+ 
+
   React.useEffect(() => {
     setLeftPosts(posts!.slice(0, 2));
     setRightPosts(posts!.slice(2, 4));
@@ -136,7 +136,7 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                       </div>
                     </div>
                     <div>
-                      <p>{HtmlDecoder({html:post.article_body,exerpt:true})}</p>
+                      <p>{HtmlDecoder({html:post.article_body.slice(0,200)})}</p>
                       <button className="py-2 text-purple-600 flex items-center gap-2 hover:text-red-600 text-[.85rem]">
                         <span> Continue reading </span>
                         <FontAwesomeIcon
