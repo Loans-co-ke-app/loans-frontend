@@ -11,8 +11,18 @@ import posts from "../data/blogs.json";
 import React from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { IPostEntity } from "../interfaces/Post";
+import HtmlDecoder from "./HtmlDecoder";
 
-const HomeNews = () => {
+const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
+  const [leftPosts, setLeftPosts] = React.useState<IPostEntity[]>([]);
+  const [rightPosts, setRightPosts] = React.useState<IPostEntity[]>([]);
+  console.log(posts,"Posts");
+  
+  React.useEffect(() => {
+    setLeftPosts(posts!.slice(0, 2));
+    setRightPosts(posts!.slice(2, 4));
+  }, [posts])
   return (
     <div className="grid md:grid-cols-[2fr_1fr] mt-4">
       {/* Left 1 */}
@@ -21,7 +31,7 @@ const HomeNews = () => {
           <hr className="h-1 bg-purple-600 my-4" />
           <div className="flex items-center justify-between">
             <h1 className="text-purple-600 font-bold uppercase">
-              Central kenya
+              Todays headlines
             </h1>
             <div className="flex items-center gap-2">
               <FontAwesomeIcon icon={faArrowLeft} />
@@ -30,12 +40,12 @@ const HomeNews = () => {
           </div>
           <div className="p-2">
             <ul>
-              {posts.slice(0, 3).map((post) => (
-                <Link key={post.title} to={`blogs/${post.title}`}>
+              {leftPosts.map((post) => (
+                <Link key={post.article_title} to={`/post/${post.slug}`}>
                   <div className="flex flex-col gap-3">
                     <div className="relative shadow-md h-48">
                       <img
-                        src={post.image}
+                        src={post.featured_image}
                         alt=""
                         className="w-full absolute h-full object-cover -z-[1]"
                       />
@@ -56,15 +66,15 @@ const HomeNews = () => {
                         {/* about post */}
                         <div>
                           <div className="text-[.75rem] flex gap-2">
-                            <span>By {post.author.username}</span>
+                            <span>By {post.authors.first_name}</span>
                             <span>On {moment().format("LL")}</span>
                           </div>
-                          <h3 className="text-2xl ">{post.title}</h3>
+                          <h3 className="text-2xl ">{post.article_title}</h3>
                         </div>
                       </div>
                     </div>
                     <div>
-                      <p>{post.body.slice(0, 200)}</p>
+                      <p>{HtmlDecoder({html:post.article_body.slice(0,200)})}</p>
                       <button className="py-2 text-purple-600 flex items-center gap-2 hover:text-red-600 text-[.85rem]">
                         <span> Continue reading </span>
                         <FontAwesomeIcon
@@ -83,7 +93,7 @@ const HomeNews = () => {
           <hr className="h-1 bg-purple-600 my-4" />
           <div className="flex items-center justify-between">
             <h1 className="text-purple-600 font-bold uppercase">
-              National treasury
+              Top pics
             </h1>
             <div className="flex items-center gap-2">
               <FontAwesomeIcon icon={faArrowLeft} className="cursor-pointer" />
@@ -92,12 +102,12 @@ const HomeNews = () => {
           </div>
           <div className="p-2">
             <ul>
-              {posts.slice(3, 5).map((post) => (
-                <Link key={post.title} to={`blogs/${post.title}`}>
+              {rightPosts.map((post) => (
+                <Link key={post.article_title} to={`post/${post.slug}`}>
                   <div className="flex flex-col gap-3">
                     <div className="relative shadow-md h-48">
                       <img
-                        src={post.image}
+                        src={post.featured_image}
                         alt=""
                         className="w-full absolute h-full object-cover -z-[1]"
                       />
@@ -118,15 +128,15 @@ const HomeNews = () => {
                         {/* about post */}
                         <div>
                           <div className="text-[.75rem] flex gap-2">
-                            <span>By {post.author.username}</span>
+                            <span>By {post.authors.first_name}</span>
                             <span>On {moment().format("LL")}</span>
                           </div>
-                          <h3 className="text-2xl ">{post.title}</h3>
+                          <h3 className="text-2xl ">{post.article_title}</h3>
                         </div>
                       </div>
                     </div>
                     <div>
-                      <p>{post.body.slice(0, 200)}</p>
+                      <p>{HtmlDecoder({html:post.article_body,exerpt:true})}</p>
                       <button className="py-2 text-purple-600 flex items-center gap-2 hover:text-red-600 text-[.85rem]">
                         <span> Continue reading </span>
                         <FontAwesomeIcon
@@ -181,26 +191,26 @@ const HomeNews = () => {
         {/* Featured news */}
         <div>
           <div className="flex items-center justify-between">
-            <h1>Featured news</h1>{" "}
+            <h1>Editors pick</h1>{" "}
             <FontAwesomeIcon icon={faNewspaper} size="1x" />
           </div>
           <ul className="flex flex-col gap-5 py-1">
             {posts.slice(0, 3).map((item, index) => (
-              <li className="flex items-center gap-3">
+              <li key={index} className="flex items-center gap-3">
                 <div className="w-full h-24 md:w-24 relative">
                   <img
-                    src={item.image}
+                    src={item.featured_image}
                     alt=""
                     className="w-full h-full object-cover absolute"
                   />
                 </div>
                 <div>
                   <div className="flex justify-between items-center text-[.85rem] gap-3">
-                    <span>{item.author.username}</span>
+                    <span>{item.authors.first_name}</span>
                     <span>{moment().format("LL")}</span>
                   </div>
                   <div>
-                    <h2 className="text-purple-600 font-bold">{item.title}</h2>
+                    <h2 className="text-purple-600 font-bold">{item.article_title}</h2>
                   </div>
                 </div>
               </li>

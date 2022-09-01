@@ -2,22 +2,13 @@ import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
+import { IPostEntity } from "../interfaces/Post";
 
-const HomeEditorsFeaturedBlog = ({
-  author,
-  image,
-  index,
-  title,
-}: {
-  index: number;
-  image: string;
-  title: string;
-  author: any;
-}) => {
+const HomeEditorsFeaturedBlog = (post: IPostEntity) => {
   return (
-    <li key={index} className="relative shadow-md h-48">
+    <li key={post.slug} className="relative shadow-md h-48">
       <img
-        src={image}
+        src={post.featured_image}
         alt=""
         className="w-full absolute h-full object-cover -z-[1]"
       />
@@ -38,9 +29,9 @@ const HomeEditorsFeaturedBlog = ({
         {/* about post */}
         <div>
           <div className="text-[.75rem] flex gap-2">
-            <span>By {author.username}</span><span>On {moment().format('LL')}</span>
+            <span>By {post.authors.first_name} {post.authors.last_name}</span><span>On {moment().format('LL')}</span>
           </div>
-          <h3 className="text-2xl ">{title}</h3>
+          <h3 className="text-2xl ">{post.article_title}</h3>
         </div>
       </div>
     </li>
