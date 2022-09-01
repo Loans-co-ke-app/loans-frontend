@@ -128,15 +128,15 @@ const Header = () => {
       >
         <div className="w-full max-w-7xl mx-auto  px-2 text-white top-0">
           <nav className="hidden w-full md:flex justify-between gap-2 items-center">
-            <ul className="flex gap-2 flex-1 py-2">
+            <ul className="flex justify-center  gap-4 flex-1 py-2">
               {navItems.map((item, index) =>
                 item.hasChildren ? (
-                  <li key={index} className="basis-1 shrink-0 grow text-center py-2 group hover:border-b relative">
+                  <li key={index} className=" text-center py-2 group hover:border-b relative">
                     <button className="flex items-center justify-between gap-2">
-                      <span className="uppercase">{item.name}</span>
+                      <span className="">{item.name}</span>
                       <FontAwesomeIcon icon={faChevronDown} className="text-[.85rem]"/>
                     </button>
-                    <ul className="hidden flex-col gap-2 absolute group-hover:flex border top-[calc(100%_+_2px)] bg-white w-full z-10 rounded-sm">
+                    <ul className="hidden flex-col gap-4 justify-center absolute group-hover:flex border top-[calc(100%_+_2px)] bg-white min-w-[10rem] w-full z-10 rounded-sm">
                       {item.children.map((child) => (
                         <li key={child.name} className="flex items-center px-2 py-2 text-purple-600 text-left hover:bg-orange-300">
                          <Link to={child.url} >{child.name}</Link>
@@ -145,7 +145,7 @@ const Header = () => {
                     </ul>
                   </li>
                 ) : (
-                  <li key={item.name} className="basis-1 shrink-0 grow text-center py-2 hover:border-b">
+                  <li key={item.name} className="text-center py-2 hover:border-b">
                     <Link to={item.url}>{item.name}</Link>
                   </li>
                 )
