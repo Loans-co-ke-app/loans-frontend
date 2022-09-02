@@ -9,7 +9,6 @@ import BASE_URL, { axiosQuery } from '../api/api';
 import HtmlDecoder from '../components/HtmlDecoder';
 import { IPostEntity } from '../interfaces/Post';
 import { samplePost } from '../utils/postSample';
-import userAvatar from './../assets/user.svg';
 
 const SinglePost = () => {
     const [loading, setLoading] = React.useState<boolean>(true);
@@ -57,7 +56,7 @@ const SinglePost = () => {
                 </div>
                 <div className='border my-3 flex gap-2'>
                     <div className='w-2/5 h-full bg-gray-300 p-4'>
-                        <img src={userAvatar} alt="" className='w-full h-1/2' />
+                        <img src={'/user.svg'} alt="" className='w-full h-1/2' />
                         <div className='text-[.85rem]'>
                             <span>{`${post.authors.first_name} ${post.authors.last_name}`}</span>
                         </div>
