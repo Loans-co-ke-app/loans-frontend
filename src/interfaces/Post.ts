@@ -10,7 +10,7 @@ export interface IPostEntity {
     author_email?: string | null;
     author_description?: string;
   };
-  featured: false;
+  featured: boolean;
   featured_image: string;
   publish_date: string;
   sector_category?: string;
