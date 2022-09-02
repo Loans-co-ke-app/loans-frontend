@@ -5,10 +5,10 @@ import moment from 'moment';
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import BASE_URL from '../api/api';
+import BASE_URL, { axiosQuery } from '../api/api';
 import HtmlDecoder from '../components/HtmlDecoder';
 import { IPostEntity } from '../interfaces/Post';
-import publicAxios from '../utils/requests';
+import { samplePost } from '../utils/postSample';
 import userAvatar from './../assets/user.svg';
 
 const SinglePost = () => {
@@ -16,13 +16,13 @@ const SinglePost = () => {
     const [error, setError] = React.useState<string>('');
     const { slug } = useParams()
     const [post, setPost] = React.useState<IPostEntity>(
-        { article_body: '', article_company: '', article_title: '', featured: false, publish_date: '', authors: { first_name: '', last_name: '', id: 1 }, featured_image: '', slug: '' }
+        samplePost
     )
     const fetchPost = async () => {
         try {
 
             setLoading(true)
-            const res = await publicAxios.get(BASE_URL + `/${slug}`)
+            const res = await axiosQuery.get(`/${slug}`)
             setPost(res.data)
             setError('')
             setLoading(false)
@@ -57,7 +57,7 @@ const SinglePost = () => {
                 </div>
                 <div className='border my-3 flex gap-2'>
                     <div className='w-2/5 h-full bg-gray-300 p-4'>
-                        <img src={userAvatar} alt="" className='w-full h-1/2'/>
+                        <img src={userAvatar} alt="" className='w-full h-1/2' />
                         <div className='text-[.85rem]'>
                             <span>{`${post.authors.first_name} ${post.authors.last_name}`}</span>
                         </div>
@@ -68,7 +68,7 @@ const SinglePost = () => {
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quos sapiente praesentium sint. Voluptas, optio ducimus modi officia sunt vel. Quisquam sed nemo nam est laboriosam placeat perferendis soluta illum.
                         </p>
                         <div className='py-2 flex items-center gap-2'>
-                            <FontAwesomeIcon icon={faFacebook} color="blue"/>
+                            <FontAwesomeIcon icon={faFacebook} color="blue" />
                             <FontAwesomeIcon icon={faTwitter} color="blue" />
                             <FontAwesomeIcon icon={faFeed} color="orange" />
                             <FontAwesomeIcon icon={faGoogle} />

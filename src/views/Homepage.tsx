@@ -1,15 +1,15 @@
 import React from "react";
+import { axiosQuery } from "../api/api";
 import HomeFeaturedPost from "../components/HomeFeaturedPost";
 import HomeNews from "../components/HomeNews";
 import posts from "../data/blogs.json";
-import publicAxios from "../utils/requests";
 
 const Homepage = () => {
   const [posts, setPosts] = React.useState<any[]>([])
 
   
   const fetchPosts = async () => {
-    const response = await publicAxios.get('')
+    const response = await axiosQuery.get('')
     setPosts(response.data)
     console.log(response.data);
   }

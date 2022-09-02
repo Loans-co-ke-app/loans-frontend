@@ -4,15 +4,16 @@ import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { axiosQuery } from "../api/api";
 import { IPostEntity } from "../interfaces/Post";
-import publicAxios from "../utils/requests";
+import { samplePost } from "../utils/postSample";
 import HomeEditorsFeaturedBlog from "./HomeEditorsFeaturedBlog";
 
 
 const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
-  const [featuredArticle, setFeaturedArticle] = React.useState<IPostEntity>({ article_body: '', article_company: '', article_title: '', featured: false, publish_date: '', authors: { first_name: '', last_name: '', id: 1 }, featured_image: '', slug: '' });
+  const [featuredArticle, setFeaturedArticle] = React.useState<IPostEntity>(samplePost);
   const fetchFeaturedPost = async () => {
-    const response = await publicAxios.get('/article_featured/')
+    const response = await axiosQuery.get('/article_featured/')
     setFeaturedArticle(response.data[0])
 
   }
