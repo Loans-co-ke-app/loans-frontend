@@ -1,0 +1,219 @@
+[
+  {
+    "name": "Home",
+    "url": "/",
+    "icon": "home",
+    "hasChildren": false,
+    "children": [],
+    "isActive": false,
+    "isOpen": false,
+    "isVisible": true
+  },
+  {
+    "name": "Loans",
+    "url": "/loans",
+    "icon": "loans",
+    "hasChildren": true,
+    "children": [
+        {
+            "name": "Banking",
+            "url": "/loans/list",
+            "icon": "loan-list",
+            "hasChildren": false,
+            "children": [],
+            "isActive": false,
+            "isOpen": false,
+            "isVisible": true
+        },
+        {
+            "name": "Capital Markets",
+            "url": "/loans/details",
+            "icon": "loan-details",
+            "hasChildren": false,
+            "children": [],
+            "isActive": false,
+            "isOpen": false,
+            "isVisible": true
+        },
+        {
+            "name": "Commercial",
+            "url": "/loans/details",
+            "icon": "loan-details",
+            "hasChildren": false,
+            "children": [],
+            "isActive": false,
+            "isOpen": false,
+            "isVisible": true
+        },
+        {
+            "name": "Consumer",
+            "url": "/loans/details",
+            "icon": "loan-details",
+            "hasChildren": false,
+            "children": [],
+            "isActive": false,
+            "isOpen": false,
+            "isVisible": true
+        },
+        {
+            "name": "Corporate",
+            "url": "/loans/details",
+            "icon": "loan-details",
+            "hasChildren": false,
+            "children": [],
+            "isActive": false,
+            "isOpen": false,
+            "isVisible": true
+        },
+        {
+            "name": "Credit Cards",
+            "url": "/loans/details",
+            "icon": "loan-details",
+            "hasChildren": false,
+            "children": [],
+            "isActive": false,
+            "isOpen": false,
+            "isVisible": true
+        },
+        {
+            "name": "Equity",
+            "url": "/loans/details",
+            "icon": "loan-details",
+            "hasChildren": false,
+            "children": [],
+            "isActive": false,
+            "isOpen": false,
+            "isVisible": true
+        },
+        {
+            "name": "Fixed Interest",
+            "url": "/loans/details",
+            "icon": "loan-details",
+            "hasChildren": false,
+            "children": [],
+            "isActive": false,
+            "isOpen": false,
+            "isVisible": true
+        },
+        {
+            "name": "Home Equity",
+            "url": "/loans/details",
+            "icon": "loan-details",
+            "hasChildren": false,
+            "children": []
+        }
+    ],
+    "isActive": false,
+    "isOpen": false
+  },
+  {
+    "name": "About",
+    "url": "/about",
+    "icon": "about",
+    "hasChildren": false,
+    "children": [],
+    "isActive": false,
+    "isOpen": false
+  },
+  {
+    "name": "Contact",
+    "url": "/contact",
+    "icon": "contact",
+    "hasChildren": false,
+    "children": [],
+    "isActive": false,
+    "isOpen": false
+  },
+  {
+    "name": "tools",
+    "url": "/tools",
+    "icon": "tools",
+    "hasChildren": true,
+    "children": [
+      {
+        "name": "Calculator",
+        "url": "/tools/calculator",
+        "icon": "calculator",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      }
+    ],
+    "isActive": false,
+    "isOpen": false
+  },
+  {
+    "name": "Sectors",
+    "url": "/sectors",
+    "icon": "sectors",
+    "hasChildren": true,
+    "children": [
+      {
+        "name": "Agriculture",
+        "url": "/sectors/agriculture",
+        "icon": "agriculture",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      },
+      {
+        "name": "Construction",
+        "url": "/sectors/construction",
+        "icon": "construction",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      },
+      {
+        "name": "Education",
+        "url": "/sectors/education",
+        "icon": "education",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      },
+      {
+        "name": "Health",
+        "url": "/sectors/health",
+        "icon": "health",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      },
+      {
+        "name": "Housing",
+        "url": "/sectors/housing",
+        "icon": "housing",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      },
+      {
+        "name": "Industry",
+        "url": "/sectors/industry",
+        "icon": "industry",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      },
+      {
+        "name": "Infrastructure",
+        "url": "/sectors/infrastructure",
+        "icon": "infrastructure",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      },
+      {
+        "name": "Transport",
+        "url": "/sectors/transport",
+        "icon": "transport",
+        "hasChildren": false,
+        "children": [],
+        "isActive": false
+      }
+    ],
+    "isActive": false,
+    "isOpen": false
+  }
+]

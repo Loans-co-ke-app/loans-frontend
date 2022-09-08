@@ -1,80 +1,21 @@
-{ "ts-node": {
-    "transpileOnly": true,
-    "require": ["typescript-transform-paths/register"]
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-    "compilerOptions": {
-      "target": "es5",
-      "lib": ["dom", "dom.iterable", "esnext"],
-      "allowJs": true,
-      "skipLibCheck": true,
-      "strict": true,
-      "forceConsistentCasingInFileNames": true,
-      "noEmit": true,
-      "esModuleInterop": true,
-      "module": "esnext",
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "jsx": "preserve",
-      "incremental": true,
-      "declaration": true,
-      "plugins": [
-        { "transform": "typescript-transform-paths" },
-  
-        { "transform": "typescript-transform-paths", "afterDeclarations": true }
-      ],
-      "baseUrl": "./",
-      "rootDir": "./",
-      "paths": {
-        "@ui-components/*": [
-          "components/*"
-        ],
-        "@ui-components": [
-          "components"
-        ],
-        "@ui-services": [
-          "services"
-        ],
-        "@ui-pages/*": [
-          "pages/*"
-        ],
-        "@ui-interfaces/*": [
-          "interfaces/*"
-        ],
-        "@ui-pages": [
-          "pages"
-        ],
-        "@ui-styles": [
-          "styles"
-        ],
-        "@ui-styles/*": [
-          "styles/*"
-        ],
-        "@ui-utils/*": [
-          "utils/*"
-        ],
-        "@ui-types": [
-          "types"
-        ],
-        "@ui-types/*": [
-          "types/*"
-        ],
-        "@ui-assets/*": [
-          "assets/*"
-        ],
-        "@ui-icons/*": [
-          "icons/*"
-        ],
-        "@ui-images/*": [
-          "images/*"
-        ],
-        "@ui-fonts/*": [
-          "fonts/*"
-        ],
-       
-  
-      }
-    },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules"]
-  }
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
