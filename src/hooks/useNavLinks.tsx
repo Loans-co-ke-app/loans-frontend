@@ -1,5 +1,5 @@
 import React from "react";
-import links from "./../data/nav.json";
+import links from "../data/nav";
 
 const useNavLinks = () => {
   const [navLinks, setNavLinks] = React.useState(links);
