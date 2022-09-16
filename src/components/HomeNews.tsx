@@ -54,8 +54,8 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                         <div className="w-full flex items-center justify-between">
                           {/* left */}
                           <div>
-                            {post.tags?.split(",").map((tag) => (
-                              <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
+                            {post.tags?.split(",").map((tag,index) => (
+                              <span key={index} className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
                                 {tag}
                               </span>
                             ))}
@@ -77,7 +77,7 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                       </div>
                     </div>
                     <div>
-                      <p>{HtmlDecoder({ html: post.article_body.slice(0, 200) })}</p>
+                      <div>{HtmlDecoder({ html: post.article_body.slice(0, 200) })}</div>
                       <button className="py-2 text-purple-600 flex items-center gap-2 hover:text-red-600 text-[.85rem]">
                         <span> Continue reading </span>
                         <FontAwesomeIcon
@@ -119,8 +119,8 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                         <div className="w-full flex items-center justify-between">
                           {/* left */}
                           <div>
-                          {post.tags?.split(",").map((tag) => (
-                              <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
+                          {post.tags?.split(",").map((tag,index) => (
+                              <span key={index} className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
                                 {tag}
                               </span>
                             ))}
@@ -141,7 +141,7 @@ const HomeNews = ({ posts }: { posts: IPostEntity[] }) => {
                       </div>
                     </div>
                     <div>
-                      <p>{HtmlDecoder({ html: post.article_body.slice(0, 200) })}</p>
+                      <div>{HtmlDecoder({ html: post.article_body.slice(0, 200) })}</div>
                       <button className="py-2 text-purple-600 flex items-center gap-2 hover:text-red-600 text-[.85rem]">
                         <span> Continue reading </span>
                         <FontAwesomeIcon
