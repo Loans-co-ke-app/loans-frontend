@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import BaseLayout from "../components/BaseLayout";
 import TopScroll from "../components/TopScroll";
@@ -65,7 +65,7 @@ const routes: IRouterMap[] = [
     hasChildren: false,
     Component: React.lazy(() => import("./../views/NotFound")),
   },
-  
+
 ];
 
 // export default function AppRouter() {
@@ -94,14 +94,19 @@ const RouterMap = ({ routes }: { routes: IRouterMap[] }) => {
               <Route
                 key={index}
                 path={route.urlPath}
-                element={<route.Component />}
+                element={
+                  <Suspense fallback={<>Loading</>}>
+
+                    <route.Component />
+                  </Suspense>
+                }
               >
                 {route.children?.map((childRoute, childIndex) => {
                   return (
                     <Route
                       key={childIndex}
                       path={childRoute.urlPath}
-                      element={<childRoute.Component />}
+                      element={<Suspense fallback={<>Loading</>}><childRoute.Component /></Suspense>}
                     />
                   );
                 })}
@@ -110,7 +115,11 @@ const RouterMap = ({ routes }: { routes: IRouterMap[] }) => {
               <Route
                 key={index}
                 path={route.urlPath}
-                element={<route.Component />}
+                element={
+                  <Suspense fallback={<>Loading</>}>
+                    <route.Component />
+                  </Suspense>
+                }
               />
             );
           })}
