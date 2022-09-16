@@ -1,10 +1,10 @@
 import React from "react";
-import links from "../data/nav";
+import links, { INavRoute } from "../data/nav";
 
 const useNavLinks = () => {
-  const [navLinks, setNavLinks] = React.useState(links);
+  const [navLinks, setNavLinks] = React.useState<INavRoute[]>([]);
   React.useEffect(() => {
-    setNavLinks(links);
+    setNavLinks(links.navLinks);
   }, []);
 
   return { navLinks };

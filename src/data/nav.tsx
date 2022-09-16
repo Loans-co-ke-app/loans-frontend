@@ -1,7 +1,7 @@
 import { IconDefinition } from "@fortawesome/free-brands-svg-icons";
 import { faCalculator, faChartLine, faHome, faToolbox } from "@fortawesome/free-solid-svg-icons";
 
-interface INavRoute {
+export interface INavRoute {
     path: string;
     name: string;
     icon: IconDefinition;
