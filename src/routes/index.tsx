@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import BaseLayout from "../components/BaseLayout";
+import { ErrorBoundary } from "../components/ErrorBoundary";
 import TopScroll from "../components/TopScroll";
 import Homepage from "../views/Homepage";
 import NotFound from "../views/NotFound";
@@ -88,42 +89,44 @@ const RouterMap = ({ routes }: { routes: IRouterMap[] }) => {
   return (
     <HashRouter>
       <BaseLayout>
-        <Routes>
-          {routes.map((route, index) => {
-            return route.hasChildren ? (
-              <Route
-                key={index}
-                path={route.urlPath}
-                element={
-                  <Suspense fallback={<>Loading</>}>
+        <ErrorBoundary>
+          <Routes>
+            {routes.map((route, index) => {
+              return route.hasChildren ? (
+                <Route
+                  key={index}
+                  path={route.urlPath}
+                  element={
+                    <Suspense fallback={<>Loading</>}>
 
-                    <route.Component />
-                  </Suspense>
-                }
-              >
-                {route.children?.map((childRoute, childIndex) => {
-                  return (
-                    <Route
-                      key={childIndex}
-                      path={childRoute.urlPath}
-                      element={<Suspense fallback={<>Loading</>}><childRoute.Component /></Suspense>}
-                    />
-                  );
-                })}
-              </Route>
-            ) : (
-              <Route
-                key={index}
-                path={route.urlPath}
-                element={
-                  <Suspense fallback={<>Loading</>}>
-                    <route.Component />
-                  </Suspense>
-                }
-              />
-            );
-          })}
-        </Routes>
+                      <route.Component />
+                    </Suspense>
+                  }
+                >
+                  {route.children?.map((childRoute, childIndex) => {
+                    return (
+                      <Route
+                        key={childIndex}
+                        path={childRoute.urlPath}
+                        element={<Suspense fallback={<>Loading</>}><childRoute.Component /></Suspense>}
+                      />
+                    );
+                  })}
+                </Route>
+              ) : (
+                <Route
+                  key={index}
+                  path={route.urlPath}
+                  element={
+                    <Suspense fallback={<>Loading</>}>
+                      <route.Component />
+                    </Suspense>
+                  }
+                />
+              );
+            })}
+          </Routes>
+        </ErrorBoundary>
       </BaseLayout>
     </HashRouter>
   );
