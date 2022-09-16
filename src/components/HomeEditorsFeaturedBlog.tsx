@@ -25,8 +25,8 @@ const HomeEditorsFeaturedBlog = (post: IPostEntity) => {
         <div className="w-full flex items-center justify-between">
           {/* left */}
           <div>
-            {post.tags?.split(",").map((tag) => (
-              <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
+            {post.tags?.split(",").map((tag,index) => (
+              <span key={index} className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
                 {tag}
               </span>
             ))}
@@ -48,4 +48,4 @@ const HomeEditorsFeaturedBlog = (post: IPostEntity) => {
   );
 };
 
-export default HomeEditorsFeaturedBlog;
+export default React.memo(HomeEditorsFeaturedBlog);

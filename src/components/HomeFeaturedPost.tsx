@@ -61,8 +61,8 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
             <div className="w-full flex items-center justify-between">
               {/* left */}
               <div>
-                {featuredArticle.tags?.split(",").map((tag) => (
-                  <span className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
+                {featuredArticle.tags?.split(",").map((tag,index) => (
+                  <span key={index} className="bg-purple-500 text-white px-1 uppercase text-[.75rem]">
                     {tag}
                   </span>
                 ))}
@@ -96,4 +96,4 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
   );
 };
 
-export default HomeFeaturedPost;
+export default React.memo(HomeFeaturedPost);
