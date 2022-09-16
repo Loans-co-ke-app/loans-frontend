@@ -15,6 +15,7 @@ const HomeFeaturedPost = ({ posts }: { posts: IPostEntity[] }) => {
   const fetchFeaturedPost = async () => {
     const response = await axiosQuery.get('/article_featured/')
     setFeaturedArticle(response.data[0])
+    
 
   }
   const navigate = useNavigate()

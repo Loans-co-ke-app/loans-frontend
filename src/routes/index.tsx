@@ -90,6 +90,7 @@ const RouterMap = ({ routes }: { routes: IRouterMap[] }) => {
     <HashRouter>
       <BaseLayout>
         <ErrorBoundary>
+          <TopScroll/>
           <Routes>
             {routes.map((route, index) => {
               return route.hasChildren ? (

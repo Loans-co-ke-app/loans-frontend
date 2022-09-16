@@ -36,6 +36,7 @@ const SinglePost = () => {
 
     }, [])
 
+    
     return (
         <div className="grid md:grid-cols-[2fr_1fr] mt-4">
             {/* Left 1 */}
