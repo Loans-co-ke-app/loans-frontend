@@ -10,7 +10,7 @@ const Header = () => {
     const [isHovered, setIsHovered] = React.useState(false)
 
     return (
-        <div className='w-full shadow-[0px_2px_5px_-3px_rgba(0,0,0,0.31)] z-[1000] bg-white sticky top-0'>
+        <div className='w-full shadow-[0px_2px_5px_-3px_rgba(0,0,0,0.31)] z-[1000] bg-orange-600 sticky top-0'>
 
             <div className='flex items-center gap-2 justify-between  py-4 px-2 sticky top-0 max-w-7xl w-full mx-auto'>
                 <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} isHovered={isHovered} setIsHovered={setIsHovered} />
