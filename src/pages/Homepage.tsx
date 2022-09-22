@@ -11,8 +11,8 @@ import HtmlDecoder from '../helpers/HtmlDecoder'
 const Homepage = () => {
   document.title = 'Homepage'
   const { state: { postsState: { loading, posts } } } = React.useContext(AppContext)
-  const { state: { postsState: { post} } } = React.useContext(FeaturedPostContext)
-console.log(posts);
+  const { state: { postsState: { post } } } = React.useContext(FeaturedPostContext)
+  console.log(posts);
 
   return (
     <div className='flex flex-col gap-4'>
@@ -59,9 +59,9 @@ console.log(posts);
           <div className='text-center p-4'>
             <p className='text-center text-purple-700'>{post.article_company}</p>
             <h1 className='text-2xl font-bold'><span className='font-bold text-3xl'>The big read.</span> {post.article_title}</h1>
-            <div>
-            <HtmlDecoder html={post.article_body.slice(0,200)} />
-            </div>
+            {/* <div className='text-[14px]'>
+              <HtmlDecoder html={post.article_body.slice(0, 210)} />
+            </div> */}
           </div>
         </Link>
         <div>
