@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react'
+
 import he from "he";
 
 const HtmlDecoder = ({ html, exerpt }: { html: string, exerpt?: boolean }) => {
@@ -12,4 +13,6 @@ const HtmlDecoder = ({ html, exerpt }: { html: string, exerpt?: boolean }) => {
     );
 };
 
-export default HtmlDecoder;
+
+
+export default HtmlDecoder
