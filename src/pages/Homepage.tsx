@@ -5,6 +5,7 @@ import HomeSectorSection from '../components/HomeSectorSection'
 import { LoaderComponent } from 'react-fullscreen-loader'
 import { AppContext } from '../state/providers/PostsProvider'
 import { FeaturedPostContext } from '../state/providers/FeaturedPostprovider'
+import { Link } from 'react-router-dom'
 
 const Homepage = () => {
   document.title = 'Homepage'
@@ -49,7 +50,7 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-        <div className='w-full '>
+        <Link to={`/blog/${post.slug}`} className='w-full '>
           <div className='relative'>
             <img src={post.featured_image} alt="" className='w-full h-96 object-cover' />
           </div>
@@ -57,7 +58,7 @@ const Homepage = () => {
             <p className='text-center text-purple-700'>{post.article_company}</p>
             <h1 className='text-2xl font-bold'><span className='font-bold text-3xl'>The big read.</span> {post.article_title}</h1>
           </div>
-        </div>
+        </Link>
         <div>
           <p>Editor's pick</p>
           <div className='w-full'>

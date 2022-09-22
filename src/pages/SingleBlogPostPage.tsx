@@ -81,4 +81,4 @@ const SingleBlogPostPage = () => {
     )
 }
 
-export default SingleBlogPostPage
+export default React.memo(SingleBlogPostPage)
