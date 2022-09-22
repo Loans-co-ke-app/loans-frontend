@@ -1,26 +1,13 @@
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { axiosQuery } from '../api'
 import HomeSectorSection from '../components/HomeSectorSection'
-import { IPostEntity } from '../interfaces/Post'
 import { LoaderComponent } from 'react-fullscreen-loader'
+import { AppContext } from '../state/providers/PostsProvider'
 
 const Homepage = () => {
   document.title = 'Homepage'
-  const [posts, setPosts] = React.useState<IPostEntity[]>([])
-  const [faturedPosts, setFeaturedPosts] = React.useState<IPostEntity>({} as IPostEntity)
-  const [featuredLoading, setFeaturedLoading] = React.useState<boolean>(true)
-  const [postsLoading, setPostsLoading] = React.useState<boolean>(true)
-  const fetchPosts = async () => {
-    const res = await axiosQuery.get('/')
-    console.log(res.data)
-    setPosts(res.data)
-    setPostsLoading(false)
-  }
-  React.useEffect(() => {
-    fetchPosts()
-  }, [])
+  const {state:{postsState:{loading,posts}}}=React.useContext(AppContext)
 
   return (
     <div className='flex flex-col gap-4'>
@@ -82,18 +69,18 @@ const Homepage = () => {
             </p>
           </div>
         </div>
-        <LoaderComponent loading={postsLoading} />
+        <LoaderComponent loading={loading} />
       </div>
       {/* Top news */}
-      <HomeSectorSection loading={postsLoading} posts={posts.slice(0, 4)} title='Agriculture' />
+      <HomeSectorSection loading={loading} posts={posts.slice(0, 4)} title='Agriculture' />
       {/* Spotlight */}
-      <HomeSectorSection loading={postsLoading} posts={posts.slice(4, 8)} title='Spotlight' />
+      <HomeSectorSection loading={loading} posts={posts.slice(4, 8)} title='Spotlight' />
       {/* Opinion */}
-      <HomeSectorSection loading={postsLoading} posts={posts.slice(8, 12)} title='Opinion' />
+      <HomeSectorSection loading={loading} posts={posts.slice(8, 12)} title='Opinion' />
       {/* Life and arts */}
-      <HomeSectorSection  loading={postsLoading} posts={posts.slice(12, 16)} title='Life and arts' />
+      <HomeSectorSection  loading={loading} posts={posts.slice(12, 16)} title='Life and arts' />
       {/* Markets news */}
-      <HomeSectorSection loading={postsLoading} posts={posts.slice(16, 20)} title='Markets news' />
+      <HomeSectorSection loading={loading} posts={posts.slice(16, 20)} title='Markets news' />
       {/* Technology */}
       {/* <HomeSectorSection posts={posts} title='Technology' /> */}
     </div >

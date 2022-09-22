@@ -4,8 +4,13 @@ import React from 'react'
 import { IPostEntity } from '../interfaces/Post'
 import he from 'he'
 import HtmlDecoder from '../helpers/HtmlDecoder'
+import { useNavigate } from 'react-router-dom'
 
 const HomeSectorSectionItem = ({ post, loading }: { post: IPostEntity, loading: boolean }) => {
+    const navigate = useNavigate()
+    const navigateToSinglePost = (slug:string)=>{
+        navigate(`/blog/${slug}`)
+    }
     return (
         loading ? <div className='w-full h-96 bg-gray-200 animate-pulse'></div> :
             <div className='w-full basis-64 flex-1 group'>
@@ -15,6 +20,8 @@ const HomeSectorSectionItem = ({ post, loading }: { post: IPostEntity, loading: 
                         {
                             StatusBadge(post.sector_category!)
                         }
+                        {post.article_company}
+                        {post.article_product}
                         <div className=''>
                             <FontAwesomeIcon icon={faBookmark} className='text-white absolute top-2 right-2 text-xl cursor-pointer peer' />
                             <span className='invisible peer-hover:visible transition-all ease-linear duration-300 absolute right-0 top-10 rounded-md font-roboto text-sm bg-white px-1'>
@@ -29,7 +36,7 @@ const HomeSectorSectionItem = ({ post, loading }: { post: IPostEntity, loading: 
                     <div className='text-[14px]'>
                         <HtmlDecoder html={post.article_body.slice(0, 210)} />
                     </div>
-                    <button className='py-2 text-purple-500 hover:text-red-500'>Continue reading <FontAwesomeIcon icon={faChevronRight} className='text-[12px]' /></button>
+                    <button className='py-2 text-purple-500 hover:text-red-500' onClick={e=>navigateToSinglePost(post.slug)}>Continue reading <FontAwesomeIcon icon={faChevronRight} className='text-[12px]' /></button>
                 </div>
             </div>
     )

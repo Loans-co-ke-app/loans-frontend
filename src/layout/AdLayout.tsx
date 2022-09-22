@@ -11,7 +11,9 @@ const AdLayout = ({ children }: IProps) => {
                 {children}
             </div>
             <div className='flex-[4]'>
-
+                <div>
+                    <img src="/img.webp" alt="" />
+                </div>
             </div>
         </div>
     )
