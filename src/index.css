@@ -18,7 +18,7 @@
 
 @layer {
   body {
-    @apply font-c-text no-scrollbar;
+    @apply font-c-text;
   }
 }
 
