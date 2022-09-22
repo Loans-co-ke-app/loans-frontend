@@ -8,8 +8,8 @@ const NotFoundPage = () => {
                 <img src="/404.gif" alt="" className='w-96 h-96 rounded-3xl' />
             </div>
             <div className='flex flex-col gap-2 py-6'>
-                <h1 className='text-4xl font-bold'>404</h1>
-                <p className='text-lg font-medium'>Page not found back to <Link to={'/'}>Homepage</Link></p>
+                {/* <h1 className='text-4xl font-bold'>404</h1> */}
+                <p className='text-lg font-medium'>Page not found back to <Link to={'/'} className="font-bold text-xl text-blue-700">Homepage</Link></p>
             </div>
         </div>
     )
