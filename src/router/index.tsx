@@ -26,7 +26,7 @@ const appRoutes: IRouteProps[] = [
         Component: <SingleBlogPage />,
         isNested: false,
         pathName: 'SingleBlogPost',
-        urlPath: '/blog/:id'
+        urlPath: '/blog/:slug'
     },
     {
         Component: <NotFoundPage />,
