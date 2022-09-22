@@ -1,13 +1,7 @@
 import {
     faAdversal,
-    faFacebook,
-    faInstagram,
-    faTwitter,
-    faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import {
-    faArrowRight,
-    faChevronCircleRight,
     faChevronRight,
     faCopyright,
     faEnvelope,
@@ -19,17 +13,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <div className="w-full bg-gray-900 py-8 ">
-            <footer className="max-w-7xl mx-auto py-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 text-white gap-4">
+        <div className="w-full bg-gray-900 py-8 text-md">
+            <footer className="max-w-7xl mx-auto py-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 text-white gap-4 text-lg font-rubik px-4">
                 {/* col 1 */}
                 <div>
-                    <hr className="h-3" />
-                    <div className="flex items-center justify-between px-2">
+                    
+                    <div className="flex items-center justify-between ">
                         <h1 className="font-bold text-lg">About us</h1>
                         <FontAwesomeIcon icon={faInfo} />
                     </div>
@@ -63,7 +56,7 @@ const Footer = () => {
                 </div>
                 {/* col 2 */}
                 <div>
-                    <hr className="h-3" />
+                    
                     <div className="flex items-center justify-between">
                         <h1 className="font-bold text-lg">Useful info links</h1>
                         <FontAwesomeIcon icon={faLink} />
@@ -103,7 +96,7 @@ const Footer = () => {
                 </div>
                 {/* col 3 */}
                 <div>
-                    <hr className="h-3" />
+                    
                     <div className="flex items-center justify-between">
                         <h1 className="font-bold text-lg">Advertisements</h1>
                         <FontAwesomeIcon icon={faAdversal} />
@@ -123,7 +116,7 @@ const Footer = () => {
                 </div>
                 {/* col 4 */}
                 <div>
-                    <hr className="h-3" />
+                    
                     <div className="flex items-center justify-between">
                         <h1 className="font-bold text-lg">Career</h1>
                         <FontAwesomeIcon icon={faGraduationCap} />
@@ -148,38 +141,15 @@ const Footer = () => {
             </footer>
             <div className="bg-purple-700 py-6 text-white">
                 <div className="max-w-7xl mx-auto flex items-center gap-2">
-                    <div className="flex justify-between items-center flex-1">
+                    <div className="flex justify-center items-center flex-1">
                         <div>
                             <FontAwesomeIcon icon={faCopyright} />{" "}
                             <span>
                                 {moment().year()} <strong>loans.co.ke</strong> All rights
                                 reserved
                             </span>
-                        </div>
-                        <div>
-                            <ul className="flex items-center gap-2">
-                                <li className="flex items-center gap-2">
-                                    <span>Home</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span>Help</span>
-                                </li>
-                                <li className="flex items-center gap-2">
-                                    <span>FAQs</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="flex items-center gap-2">
-                            <FontAwesomeIcon icon={faFacebook} />
-                            <FontAwesomeIcon icon={faTwitter} />
-                            <FontAwesomeIcon icon={faInstagram} />
-                            <FontAwesomeIcon icon={faYoutube} />
-                        </div>
-                    </div>
-                </div>
-            </div></div>
+
+                        </div></div></div></div></div>
     );
 };
 
