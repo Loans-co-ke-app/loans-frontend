@@ -21,7 +21,7 @@ const HomeSectorSectionItem = ({ post, loading }: { post: IPostEntity, loading: 
                             StatusBadge(post.sector_category!)
                         }
                         {post.article_company}
-                        {post.article_product}
+                        <span className='bg-purple-400 text-white rounded-md text-[12px] px-2 py-1'>{post.article_category?.category_name}</span>
                         <div className=''>
                             <FontAwesomeIcon icon={faBookmark} className='text-white absolute top-2 right-2 text-xl cursor-pointer peer' />
                             <span className='invisible peer-hover:visible transition-all ease-linear duration-300 absolute right-0 top-10 rounded-md font-roboto text-sm bg-white px-1'>
