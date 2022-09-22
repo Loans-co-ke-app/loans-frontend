@@ -4,10 +4,12 @@ import React from 'react'
 import HomeSectorSection from '../components/HomeSectorSection'
 import { LoaderComponent } from 'react-fullscreen-loader'
 import { AppContext } from '../state/providers/PostsProvider'
+import { FeaturedPostContext } from '../state/providers/FeaturedPostprovider'
 
 const Homepage = () => {
   document.title = 'Homepage'
-  const {state:{postsState:{loading,posts}}}=React.useContext(AppContext)
+  const { state: { postsState: { loading, posts } } } = React.useContext(AppContext)
+  const { state: { postsState: { post} } } = React.useContext(FeaturedPostContext)
 
   return (
     <div className='flex flex-col gap-4'>
@@ -49,11 +51,11 @@ const Homepage = () => {
         </div>
         <div className='w-full '>
           <div className='relative'>
-            <img src='/img.webp' alt="" className='w-full h-96 object-cover' />
+            <img src={post.featured_image} alt="" className='w-full h-96 object-cover' />
           </div>
           <div className='text-center p-4'>
-            <p className='text-center text-purple-700'>Industrial politics</p>
-            <h1 className='text-2xl font-bold'><span className='font-bold text-3xl'>The big read.</span> Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
+            <p className='text-center text-purple-700'>{post.article_company}</p>
+            <h1 className='text-2xl font-bold'><span className='font-bold text-3xl'>The big read.</span> {post.article_title}</h1>
           </div>
         </div>
         <div>
@@ -78,7 +80,7 @@ const Homepage = () => {
       {/* Opinion */}
       <HomeSectorSection loading={loading} posts={posts.slice(8, 12)} title='Opinion' />
       {/* Life and arts */}
-      <HomeSectorSection  loading={loading} posts={posts.slice(12, 16)} title='Life and arts' />
+      <HomeSectorSection loading={loading} posts={posts.slice(12, 16)} title='Life and arts' />
       {/* Markets news */}
       <HomeSectorSection loading={loading} posts={posts.slice(16, 20)} title='Markets news' />
       {/* Technology */}
