@@ -1,7 +1,6 @@
 import { faBookmark, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import LazyLoad from 'react-lazyload';
 import { IPostEntity } from '../interfaces/Post'
 import he from 'he'
 import HtmlDecoder from '../helpers/HtmlDecoder'
@@ -17,10 +16,7 @@ const HomeSectorSectionItem = ({ post, loading }: { post: IPostEntity, loading: 
         loading ? <div className='w-full h-96 bg-gray-200 animate-pulse'></div> :
             <div className='w-full basis-64 flex-1 group'>
                 <div className='relative overflow-hidden'>
-                    <LazyLoad once height={240}>
-
                     <img src={post.featured_image} alt="" className='w-full h-60 object-cover group-hover:scale-110 transition-all duration-500  ease-linear' />
-                    </LazyLoad>
                     <div className='h-full w-full absolute top-0 px-2 z-10'>
                         {
                             StatusBadge(post.sector_category!)
