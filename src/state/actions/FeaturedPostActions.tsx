@@ -1,5 +1,5 @@
 import { IPostEntity } from '../../interfaces/Post';
-const FeaturedArticleActions = {
+export const FeaturedArticleActions = {
     ['FEATURED_POST_LOAD_START']: {
 
     },

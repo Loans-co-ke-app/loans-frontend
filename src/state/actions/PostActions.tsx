@@ -1,5 +1,5 @@
 import { IPostEntity } from '../../interfaces/Post';
-const PostActions = {
+export const PostActions = {
     ['POST_LOAD_START']: {
 
     },

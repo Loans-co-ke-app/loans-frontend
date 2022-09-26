@@ -2,6 +2,7 @@ import { AxiosError } from 'axios'
 import React from 'react'
 import { axiosQuery } from './api'
 import AppRouter from './router'
+import { PostActions } from './state/actions/PostActions'
 import { FeaturedPostContext } from './state/providers/FeaturedPostprovider'
 import { AppContext } from './state/providers/PostsProvider'
 
