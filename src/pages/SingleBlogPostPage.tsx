@@ -33,7 +33,7 @@ const SingleBlogPostPage = () => {
     }
     React.useEffect(() => {
         fetchSinglePost()
-    }, [])
+    }, [slug])
     return (
         <AdLayout>
 
