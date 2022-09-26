@@ -24,44 +24,44 @@ const navLinks: INavRoute[] = [
             {
                 name: 'Finance holding',
                 hasChildren: false,
-                path: '/loans/finance-holding',
+                path: '/categories/finance-holding',
                 icon: faHome
             },
             {
                 name: 'Regulatory',
                 hasChildren: false,
-                path: '/loans/regulatory',
+                path: '/categories/regulatory',
                 icon: faHome
             },
             {
                 name: 'Telcos',
                 hasChildren: false,
-                path: '/loans/telcos',
+                path: '/categories/telcos',
                 icon: faHome
             },
             {
                 name: 'Pension',
                 hasChildren: false
                 ,
-                path: '/loans/pension',
+                path: '/categories/pension',
                 icon: faHome
             },
             {
                 name: 'Insurance',
                 hasChildren: false,
-                path: '/loans/insurance',
+                path: '/categories/insurance',
                 icon: faHome
             },
             {
                 name: 'Capital Market',
                 hasChildren: false,
-                path: '/loans/capital-market',
+                path: '/categories/capital-market',
                 icon: faHome
             },
             {
                 name: 'Banking',
                 hasChildren: false,
-                path: '/loans/banking',
+                path: '/categories/banking',
                 icon: faHome
             }
         ]
@@ -107,25 +107,25 @@ const navLinks: INavRoute[] = [
                     {
                         name: 'Crops',
                         hasChildren: false,
-                        path: '/sectors/agriculture/crops',
+                        path: '/categories/agriculture/crops',
                         icon: faHome
                     },
                     {
                         name: 'Livestock',
                         hasChildren: false,
-                        path: '/sectors/agriculture/livestock',
+                        path: '/categories/agriculture/livestock',
                         icon: faHome
                     },
                     {
                         name: 'Fisheries',
                         hasChildren: false,
-                        path: '/sectors/agriculture/fisheries',
+                        path: '/categories/agriculture/fisheries',
                         icon: faHome
                     },
                     {
                         name: 'Forestry',
                         hasChildren: false,
-                        path: '/sectors/agriculture/forestry',
+                        path: '/categories/agriculture/forestry',
                         icon: faHome
                     }
                 ]
