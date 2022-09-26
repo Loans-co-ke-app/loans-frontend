@@ -49,7 +49,7 @@ const AdLayout = ({ children }: IProps) => {
                 <div className="px-3 flex-1 h-32 flex justify-center flex-col items-stretch">
                   <h2 className="font-bold">{post.article_title}</h2>
                   <div className="flex items-center gap-3">
-                    <img src="/img.webp" alt="" className="h-12 w-12 rounded-full"/>
+                    <img src="/img.webp" alt="" className="h-12 w-12 rounded-full object-cover"/>
                     <div className="flex flex-col">
                         <div className="font-bold">{post.authors.first_name} {post.authors.last_name}</div>
                         <span className="text-[12px] italic">{moment(post!.publish_date).format('LL')}</span>
