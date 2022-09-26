@@ -25,7 +25,6 @@ const Header = () => {
                 <div className='flex md:hidden items-center'>
                     <h2 className='text-3xl text-white'>Loans.co.ke</h2>
                 </div>
-                {/* <div></div> */}
                 <div className='hidden md:flex justify-between gap-5 items-center'>
                     {
                         navLinks.map((link) => (
