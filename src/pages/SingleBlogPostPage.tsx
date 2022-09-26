@@ -19,7 +19,6 @@ const SingleBlogPostPage = () => {
         try {
             setLoading(true)
             const res = await axiosQuery.get(`/${slug}`)
-            console.log(res.data);
 
             setPost(res.data)
             setErr('')
@@ -27,7 +26,6 @@ const SingleBlogPostPage = () => {
 
         } catch (error: any) {
             if (error instanceof AxiosError) {
-                console.log(error.response?.data);
 
             }
         }

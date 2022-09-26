@@ -12,7 +12,6 @@ const Homepage = () => {
   document.title = 'Homepage'
   const { state: { postsState: { loading, posts } } } = React.useContext(AppContext)
   const { state: { postsState: { post } } } = React.useContext(FeaturedPostContext)
-  console.log(posts);
 
   return (
     <div className='flex flex-col gap-4'>
