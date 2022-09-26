@@ -6,6 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
+import { Link } from "react-router-dom";
 import { AppContext } from "../state/providers/PostsProvider";
 
 interface IProps {
@@ -37,7 +38,7 @@ const AdLayout = ({ children }: IProps) => {
         <div className="flex flex-col gap-4">
           {posts.length > 0 &&
             posts.slice(0, 5).map((post) => (
-              <div key={post.slug} className="flex">
+              <Link to={`/blog/${post.slug}`} key={post.slug} className="flex">
                 <div>
                   <img
                     src={post.featured_image}
@@ -55,7 +56,7 @@ const AdLayout = ({ children }: IProps) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
         </div>
       </div>
