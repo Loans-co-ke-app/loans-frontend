@@ -18,8 +18,8 @@ const Header = () => {
                     <div className='flex gap-4'>
                         <FontAwesomeIcon icon={faBars} className='cursor-pointer' onClick={
                             () => setIsOpen(!isOpen)
-                        } />
-                        <FontAwesomeIcon icon={faSearch} className='hidden md:block' />
+                        } color="white"/>
+                        <FontAwesomeIcon icon={faSearch} className='hidden md:block text-white' />
                     </div>
                 </div>
                 <div className='flex md:hidden items-center'>
@@ -32,10 +32,10 @@ const Header = () => {
                             link.hasChildren ? (
                                 <div className='relative group' key={link.name} >
                                     <div className='flex items-center gap-2'>
-                                        <button>{link.name}</button>
-                                        <FontAwesomeIcon icon={faChevronDown} size={'1x'} className='text-[12px]' />
+                                        <button className='text-white font-bold'>{link.name}</button>
+                                        <FontAwesomeIcon icon={faChevronDown} size={'1x'} className='text-[12px]' color='white' />
                                     </div>
-                                    <div className='absolute top-5 left-0 bg-white w-48 rounded-md shadow-md hidden group-hover:block'>
+                                    <div className='absolute top-5 left-0 bg-white border-orange-600 border w-48 rounded-md shadow-md hidden group-hover:block'>
                                         <div className='flex flex-col gap-2 py-2'>
                                             {
                                                 link.children?.map((child) => (
@@ -46,15 +46,15 @@ const Header = () => {
                                     </div>
                                 </div>
                             ) : (
-                                <div key={link.name} className='hidden md:block'>
-                                    <Link to={link.path} className=' hover:text-gray-900'>{link.name}</Link>
+                                <div key={link.name} className='hidden md:block font-bold text-white'>
+                                    <Link to={link.path} className=' hover:text-gray-300'>{link.name}</Link>
                                 </div>
                             )))
                     }
                 </div>
                 <div className='flex items-center justify-between gap-2'>
-                    <button className='hidden md:block p-1 bg-black text-white text-[.85rem]'>Subscribe</button>
-                    <button>Sign in</button>
+                    <button className='hidden md:block py-1 px-4 bg-black text-white text-[.85rem] rounded-md'>Subscribe</button>
+                    <button className='text-white font-bold'>Sign in</button>
                 </div>
             </div>
         </div>
