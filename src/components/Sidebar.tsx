@@ -52,7 +52,11 @@ const Sidebar = ({ isOpen, setIsOpen, isHovered, setIsHovered }: IProps) => {
             <div className='flex flex-col gap-1'>
                 <div className='flex justify-between gap-3'>
 
-                    <h1 className='text-3xl uppercase'>Loans.co.ke</h1> <button onClick={e => {
+                    <h1 className='text-3xl uppercase'>
+                        <Link to={'/'}>
+                        Loans.co.ke
+                        </Link>
+                    </h1> <button onClick={e => {
                         e.stopPropagation()
                         setIsOpen(false)
                     }}><FontAwesomeIcon icon={faMultiply} /></button>
