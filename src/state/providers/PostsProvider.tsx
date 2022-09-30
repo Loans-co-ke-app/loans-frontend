@@ -15,7 +15,7 @@ interface IInitialState {
 const initialState: IInitialState = {
     postsState: {
         posts: [],
-        loading: false,
+        loading: true,
         failure: false
     }
 }
@@ -65,7 +65,7 @@ const postsReducer = (state: IInitialState,
     }
 }
 
-const AppContext = React.createContext<{
+const PostsContext = React.createContext<{
     state: IInitialState, dispatch: React.Dispatch<IMapper<{
         type: PostActionTypes;
         payload: IMapper<IPostActions>[keyof IMapper<IPostActions>];
@@ -76,9 +76,9 @@ const AppContext = React.createContext<{
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const [state, dispatch] = React.useReducer(postsReducer, initialState)
-    return <AppContext.Provider value={{ state, dispatch }}>
+    return <PostsContext.Provider value={{ state, dispatch }}>
         {children}
-    </AppContext.Provider>
+    </PostsContext.Provider>
 }
 
-export { AppContext, AppProvider }
+export { PostsContext, AppProvider }

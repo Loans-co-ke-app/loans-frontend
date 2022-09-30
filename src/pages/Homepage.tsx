@@ -3,14 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import HomeSectorSection from '../components/HomeSectorSection'
 import { LoaderComponent } from 'react-fullscreen-loader'
-import { AppContext } from '../state/providers/PostsProvider'
+import { PostsContext } from '../state/providers/PostsProvider'
 import { FeaturedPostContext } from '../state/providers/FeaturedPostprovider'
 import { Link } from 'react-router-dom'
 import HtmlDecoder from '../helpers/HtmlDecoder'
 
 const Homepage = () => {
   document.title = 'Homepage'
-  const { state: { postsState: { loading, posts } } } = React.useContext(AppContext)
+  const { state: { postsState: { loading, posts } } } = React.useContext(PostsContext)
   const { state: { postsState: { post } } } = React.useContext(FeaturedPostContext)
 
   return (

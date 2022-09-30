@@ -15,7 +15,6 @@ const PostCategoriesPage = () => {
     };
     fetchCategories();
   }, []);
-  console.log(category);
 
   return (
     <div className="min-h-screen">
