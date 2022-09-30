@@ -17,9 +17,11 @@ const Homepage = () => {
   } = React.useContext(PostsContext);
   const {
     state: {
-      postsState: { post },
+      postsState: { post,loading:featuredPostLoading },
     },
   } = React.useContext(FeaturedPostContext);
+
+
 
   return (
     <motion.div
@@ -67,6 +69,12 @@ const Homepage = () => {
             </div>
           </div>
         </div>
+{/* Skeleton loading  */}
+        {featuredPostLoading ? (
+          <div className="flex flex-col gap-4 w-full bg-gray-400">
+           <div className="w-full h-3/4 bg-gray-200 animate-pulse"></div>
+           <div className="px-4 bg-gray-300 animate-bounce rounded-md h-10"></div>
+          </div>):(
         <Link to={`/blog/${post.slug}`} className="w-full ">
           <div className="relative">
             <img
@@ -87,7 +95,7 @@ const Homepage = () => {
               <HtmlDecoder html={post.article_body.slice(0, 210)} />
             </div> */}
           </div>
-        </Link>
+        </Link>)}
         <div>
           <p>Editor's pick</p>
           <div className="w-full">

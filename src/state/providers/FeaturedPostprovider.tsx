@@ -17,7 +17,7 @@ const initialState: IInitialState = {
         post: {
 
         } as any,
-        loading: false,
+        loading: true,
         failure: false
     }
 }
