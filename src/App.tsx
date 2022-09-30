@@ -34,11 +34,12 @@ const App = () => {
       featuredPostDispatch({ type: "FEATURED_POST_LOAD_START", payload: {} });
       const res = await axiosQuery.get("/article_featured/");
       const data = res.data[0];
-
-      featuredPostDispatch({
-        type: "FEATURED_POST_LOAD_SUCCESS",
-        payload: { ...data },
-      });
+      setTimeout(() => {
+        featuredPostDispatch({
+          type: "FEATURED_POST_LOAD_SUCCESS",
+          payload: { ...data },
+        });
+      }, 2000);
     } catch (error: any) {
       if (error instanceof AxiosError) {
         featuredPostDispatch({
