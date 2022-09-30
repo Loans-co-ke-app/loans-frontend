@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IPostEntity {
   article_body: string
   article_company?: any;
