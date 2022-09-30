@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../state/providers/PostsProvider";
+import { PostsContext } from "../state/providers/PostsProvider";
 
 interface IProps {
   children: JSX.Element;
@@ -17,7 +17,7 @@ const AdLayout = ({ children }: IProps) => {
     state: {
       postsState: { posts },
     },
-  } = React.useContext(AppContext);
+  } = React.useContext(PostsContext);
   return (
     <div className="flex flex-col md:flex-row flex-wrap">
       <div className="flex-[8]">{children}</div>
