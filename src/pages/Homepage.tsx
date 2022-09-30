@@ -26,10 +26,10 @@ const Homepage = () => {
   return (
     <motion.div
       className="flex flex-col gap-4"
-      initial={{ opacity: 0 }}
+      initial={{ opacity: .5 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 3 }}
+      transition={{ duration: 1 }}
     >
       {/* Header  featured post*/}
       <div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 py-4 border-b">
