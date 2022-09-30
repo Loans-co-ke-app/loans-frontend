@@ -71,7 +71,7 @@ const Homepage = () => {
         </div>
 {/* Skeleton loading  */}
         {featuredPostLoading ? (
-          <div className="flex flex-col gap-4 w-full bg-gray-400">
+          <div className="flex flex-col gap-4 w-full bg-gray-400 h-96">
            <div className="w-full h-3/4 bg-gray-200 animate-pulse"></div>
            <div className="px-4 bg-gray-300 animate-bounce rounded-md h-10"></div>
           </div>):(
