@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import BaseLayout from '../layout/BaseLayout';
 import Homepage from './../pages/Homepage';
+import Loanspage from '../pages/LoansPage';
 import NotFoundPage from './../pages/NotFoundPage';
-import PostCategoriesPage from '../pages/PostCategoriesPage';
 import React from 'react';
+import SectorsPage from '../pages/SectorsPage';
 import SingleBlogPage from './../pages/SingleBlogPostPage';
 import TopScroll from '../helpers/TopScroll';
 import { HashRouter, Route, Routes } from 'react-router-dom';
@@ -36,11 +37,18 @@ const appRoutes: IRouteProps[] = [
 		urlPath: '*',
 	},
 	{
-		Component: <PostCategoriesPage />,
+		Component: <Loanspage />,
 		isNested: false,
-		pathName: 'PostCategoriesPage',
-		urlPath: '/categories/:category',
+		pathName: 'Loanspage',
+		urlPath: '/categories',
 	},
+	{
+		Component: <SectorsPage />,
+		isNested: false,
+		pathName: 'Loanspage',
+		urlPath: '/sectors',
+	
+	}
 ];
 
 const AppRouter = () => {

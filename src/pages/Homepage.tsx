@@ -22,6 +22,7 @@ const Homepage = () => {
 		},
 	} = React.useContext(FeaturedPostContext);
 
+	console.log(posts);
 
 	return (
 		<motion.div

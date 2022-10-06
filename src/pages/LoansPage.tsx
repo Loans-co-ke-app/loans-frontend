@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import nav, { INavRoute } from '../data/nav';
 
-const PostCategoriesPage = () => {
+const LoansPage = () => {
 	const { category } = useParams();
 	const [categories, setCategories] = React.useState<INavRoute[]>([]);
 	React.useEffect(() => {
@@ -35,4 +35,4 @@ const PostCategoriesPage = () => {
 	);
 };
 
-export default PostCategoriesPage;
+export default LoansPage;
