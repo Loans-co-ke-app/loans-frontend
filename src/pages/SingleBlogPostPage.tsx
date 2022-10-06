@@ -119,11 +119,11 @@ const SingleBlogPostPage = () => {
 						</div>
 					</div>
 				</motion.div>
-			) : (
+			) : err ? (
 				<>
 					<h1>An error occured</h1>
 				</>
-			)}
+			) : <></>}
 		</AdLayout>
 	);
 };
