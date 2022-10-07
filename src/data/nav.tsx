@@ -24,7 +24,7 @@ const navLinks: INavRoute[] = [
 			{
 				name: 'Finance holding',
 				hasChildren: false,
-				path: '/categories/finance-holding',
+				path: '/categories/loans/financial-holding',
 				icon: faHome
 			},
 			{
@@ -107,25 +107,25 @@ const navLinks: INavRoute[] = [
 					{
 						name: 'Crops',
 						hasChildren: false,
-						path: '/categories/agriculture/crops',
+						path: '/sectors/agriculture/crops',
 						icon: faHome
 					},
 					{
 						name: 'Livestock',
 						hasChildren: false,
-						path: '/categories/agriculture/livestock',
+						path: '/sectors/agriculture/livestock',
 						icon: faHome
 					},
 					{
 						name: 'Fisheries',
 						hasChildren: false,
-						path: '/categories/agriculture/fisheries',
+						path: '/sectors/agriculture/fisheries',
 						icon: faHome
 					},
 					{
 						name: 'Forestry',
 						hasChildren: false,
-						path: '/categories/agriculture/forestry',
+						path: '/sectors/agriculture/forestry',
 						icon: faHome
 					}
 				]

@@ -10,13 +10,14 @@ const LoansPage = () => {
 	React.useEffect(() => {
 		const fetchCategories = async () => {
 			nav.navLinks.map((item) => {
-				if (item.children && item.name === category) 
+				if (item.children && item.name === category)
 					setCategories((prev) => [...prev, ...item.children!]);
-        
 			});
 		};
 		fetchCategories();
 	}, []);
+	const params = useParams();
+	console.log(params);
 
 	return (
 		<motion.div
