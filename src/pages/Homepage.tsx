@@ -46,7 +46,9 @@ const Homepage = () => {
 		filterSponsoredPost();
 		filterEditotorsPick();
 	}, [posts]);
-	console.log(sponsoredPost);
+	// for (let i = 0; i < posts.length; i++) 
+	// 	console.log(posts[i].article_category?.category_name);
+
 
 	return (
 		<motion.div
@@ -172,9 +174,11 @@ const Homepage = () => {
 							<h1 className="text-2xl font-bold">
 								{post.article_title}
 							</h1>
-							{/* <div className='text-[14px]'>
-              <HtmlDecoder html={post.article_body.slice(0, 210)} />
-            </div> */}
+							<div>
+								<HtmlDecoder
+									html={post.article_body.slice(0, 110)}
+								/>
+							</div>
 						</div>
 					</Link>
 				)}

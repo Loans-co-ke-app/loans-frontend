@@ -10,11 +10,11 @@ import TopScroll from '../helpers/TopScroll';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 
 interface IRouteProps {
-  pathName: string;
-  urlPath: string;
-  Component: React.ReactElement;
-  isNested: boolean;
-  children?: IRouteProps[];
+	pathName: string;
+	urlPath: string;
+	Component: React.ReactElement;
+	isNested: boolean;
+	children?: IRouteProps[];
 }
 
 const appRoutes: IRouteProps[] = [
@@ -47,7 +47,14 @@ const appRoutes: IRouteProps[] = [
 		isNested: false,
 		pathName: 'Loanspage',
 		urlPath: '/sectors/:sector/:subSector',
-	
+
+	},
+	{
+		Component: <SectorsPage />,
+		isNested: false,
+		pathName: 'Loanspage',
+		urlPath: '/sectors/:sector',
+
 	}
 ];
 
