@@ -79,7 +79,7 @@ const SingleBlogPostPage = () => {
 						<div className="border my-3 flex gap-2">
 							<div className="w-2/5 h-full bg-gray-300 p-4">
 								<img
-									src={'/user.svg'}
+									src={post.authors?.author_avatar}
 									alt=""
 									className="w-full h-1/2"
 								/>

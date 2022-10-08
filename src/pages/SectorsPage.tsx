@@ -4,7 +4,6 @@ import { INavRoute, navLinks } from '../data/nav';
 
 const SectorsPage = () => {
 	const params = useParams();
-	const [sectors, setSectors] = React.useState([]);
 	const [sectorCategories, setSectorCategories] = React.useState<
 		Array<INavRoute>
 	>([]);

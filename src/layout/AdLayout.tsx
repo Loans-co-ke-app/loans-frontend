@@ -63,7 +63,7 @@ const AdLayout = ({ children }: IProps) => {
 									</h2>
 									<div className="flex items-center gap-3">
 										<img
-											src="/img.webp"
+											src={post.authors.author_avatar}
 											alt=""
 											className="h-12 w-12 rounded-full object-cover"
 										/>
