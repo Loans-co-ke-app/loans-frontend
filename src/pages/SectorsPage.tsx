@@ -36,10 +36,10 @@ const SectorsPage = () => {
 	React.useEffect(() => {
 		const filterPostBySector = (posts: IPostEntity[], sector: string, subSector: string | undefined) => {
 			const subRegex = new RegExp(/[\s_]/gm);
-console.log('------------------------------------------------');
+			// console.log('------------------------------------------------');
 
 			unfilteredPosts.forEach((post) => {
-				console.log({ p: trimRegex.trimAndReplace(post.article_category!.category_name!.toLowerCase(), subRegex, '-').toLowerCase(), s: params.subSector ? params.subSector.toLowerCase() : '' });
+				// console.log({ p: trimRegex.trimAndReplace(post.article_category!.category_name!.toLowerCase(), subRegex, '-').toLowerCase(), subSector: params.subSector ? params.subSector.toLowerCase() : '',sector:params.sector });
 			}
 			);
 			// console.log("Posts",ps);
