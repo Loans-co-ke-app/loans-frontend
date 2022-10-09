@@ -196,14 +196,14 @@ const Homepage = () => {
 							</div>
 							<p className="text-lg font-medium">
 								<FontAwesomeIcon icon={faQuoteLeft} />{' '}
-								<span>
+								<div>
 									<HtmlDecoder
 										html={sponsoredPost.article_body.slice(
 											0,
 											110
 										)}
 									/>
-								</span>
+								</div>
 							</p>
 						</div>
 					</div>

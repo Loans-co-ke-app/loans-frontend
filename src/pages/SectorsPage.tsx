@@ -36,15 +36,15 @@ const SectorsPage = () => {
 	React.useEffect(() => {
 		const filterPostBySector = (posts: IPostEntity[], sector: string, subSector: string | undefined) => {
 			const subRegex = new RegExp(/[\s_]/gm);
-			// console.log('------------------------------------------------');
 
-			unfilteredPosts.forEach((post) => {
-				// console.log({ p: trimRegex.trimAndReplace(post.article_category!.category_name!.toLowerCase(), subRegex, '-').toLowerCase(), subSector: params.subSector ? params.subSector.toLowerCase() : '',sector:params.sector });
-			}
-			);
-			// console.log("Posts",ps);
+			const p = unfilteredPosts.filter((post) => {
+				return trimRegex.trimAndReplace(post.sector_category!, subRegex, '-').toLowerCase() === params.subSector?.toLowerCase();
+			});
+			setFilteredPosts(p);
 
 		};
+		// console.log("Posts",ps);
+
 
 
 		filterPostBySector(unfilteredPosts, sector!, params.subSector);
@@ -61,7 +61,17 @@ const SectorsPage = () => {
 				</div>)}
 			</div>
 		</div>
-		<div>
+		<div className='grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 py-4'>
+			{filteredPosts.length > 0 ? filteredPosts.map((post) => <div key={post.slug}>
+				<div className='h-96 w-full relative'>
+					<img src={post.featured_image} alt="" className='w-full h-full object-cover' />
+				</div>
+				<div>
+					<div className='text-sm text-gray-500'>{post.sector_category}</div>
+					<div className='text-lg font-bold'>{post.article_title}</div>
+				</div>
+
+			</div>) : <div>No posts found</div>}
 		</div>
 	</div>;
 };
