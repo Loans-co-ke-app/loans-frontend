@@ -6,6 +6,7 @@ import { AxiosError } from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HtmlDecoder from '../helpers/HtmlDecoder';
 import { IPostEntity } from '../interfaces/Post';
+import { LoaderComponent } from 'react-fullscreen-loader';
 import React from 'react';
 import { axiosQuery } from '../api';
 import { faFeed } from '@fortawesome/free-solid-svg-icons';
@@ -51,7 +52,7 @@ const SingleBlogPostPage = () => {
 					exit={{ opacity: 0 }}
 					transition={{ duration: 3 }}
 				>
-					<div className="px-4">
+					<div className="px-4 py-4">
 						<div></div>
 						<div className="w-full h-96 relative">
 							<img
@@ -119,9 +120,13 @@ const SingleBlogPostPage = () => {
 						</div>
 					</div>
 				</motion.div>
-			) : (
+			) : !loading && err ? (
 				<>
 					<h1>An error occured</h1>
+				</>
+			) : (
+				<>
+					<LoaderComponent loading 	/>
 				</>
 			)}
 		</AdLayout>
