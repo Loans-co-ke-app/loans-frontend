@@ -46,7 +46,7 @@ const Homepage = () => {
 		filterSponsoredPost();
 		filterEditotorsPick();
 	}, [posts]);
-	
+
 	return (
 		<motion.div
 			className="flex flex-col gap-4"
@@ -76,19 +76,19 @@ const Homepage = () => {
 							</div>
 						</div>
 						<div className="border-l border-gray-400 pl-2 flex flex-col gap-3">
-							<p className="font-medium">
+							{/* <p className="font-medium">
 								Lorem ipsum dolor sit amet, consectetur
 								adipisicing elit. Vitae, deleniti.
-							</p>
+							</p> */}
 							<div>
 								<p className="font-medium">
 									<FontAwesomeIcon
 										icon={faQuoteLeft}
 										className="text-purple-600 mr-3"
 									/>
-									<span>
+									{/* <span>
 										Lorem ipsum dolor sit amet consectetur.
-									</span>
+									</span> */}
 								</p>
 								<div className="flex items-center gap-3">
 									<img

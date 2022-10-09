@@ -77,12 +77,12 @@ const SingleBlogPostPage = () => {
 							{post.article_body &&
 								HtmlDecoder({ html: post?.article_body! })}
 						</div>
-						<div className="border my-3 flex gap-2">
-							<div className="w-2/5 h-full bg-gray-300 p-4">
+						<div className="border my-3 flex gap-2 items-center flex-col md:flex-row">
+							<div className="md:w-80 px-4 h-full flex flex-col justify-center items-center">
 								<img
 									src={post.authors?.author_avatar}
 									alt=""
-									className="w-full h-1/2"
+									className="w-full h-1/2 rounded-full md:rounded-none"
 								/>
 								<div className="text-[.85rem]">
 									<span>{`${post.authors?.first_name!} ${post
