@@ -16,8 +16,7 @@ const LoansPage = () => {
 		};
 		fetchCategories();
 	}, []);
-	const params = useParams();
-	// console.log(params);
+	// const params = useParams();
 
 	return (
 		<motion.div

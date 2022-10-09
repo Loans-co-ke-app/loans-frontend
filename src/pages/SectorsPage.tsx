@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable indent */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { IPostEntity } from '../interfaces/Post';
@@ -53,12 +55,8 @@ const SectorsPage = () => {
 						.toLowerCase() === params.subSector?.toLowerCase()
 				);
 			});
-			console.log(subSectorNames);
-
-			if (p.length > 0) {
-				setFilteredPosts(p);
-				console.log('Length greater than 0');
-			} else if (p.length === 0) {
+			if (p.length > 0) setFilteredPosts(p);
+			else if (p.length === 0) {
 				const lp = unfilteredPosts.filter((post) => {
 					const cat = trimRegex
 						.trimAndReplace(post.sector_category!, subRegex, '-')
@@ -87,14 +85,14 @@ const SectorsPage = () => {
 								className={`hover:bg-gray-300 px-4 cursor-pointer w-fit text-justify text-sm whitespace-nowrap ${
 									s.name
 										? trimRegex
-											.trimAndReplace(
-												s.name,
-												subRegex,
-												'-'
-											)
-											.toLowerCase() ===
+												.trimAndReplace(
+													s.name,
+													subRegex,
+													'-'
+												)
+												.toLowerCase() ===
 												params.subSector?.toLowerCase() &&
-										'border-b border-black'
+										  'border-b border-black'
 										: 'text-yellow-600'
 								}`}
 							>
@@ -104,15 +102,15 @@ const SectorsPage = () => {
 					))}
 				</div>
 			</div>
-			<div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 py-4">
+			<div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4 py-4">
 				{filteredPosts.length > 0 ? (
 					filteredPosts.map((post) => (
-						<div key={post.slug}>
-							<div className="h-96 w-full relative">
+						<Link to={`/blog/${post.slug}`} key={post.slug} className="group">
+							<div className="h-96 w-full relative overflow-hidden">
 								<img
 									src={post.featured_image}
 									alt=""
-									className="w-full h-full object-cover"
+									className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-linear"
 								/>
 							</div>
 							<div>
@@ -123,7 +121,7 @@ const SectorsPage = () => {
 									{post.article_title}
 								</div>
 							</div>
-						</div>
+						</Link>
 					))
 				) : (
 					<div>No posts found</div>

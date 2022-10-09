@@ -46,10 +46,7 @@ const Homepage = () => {
 		filterSponsoredPost();
 		filterEditotorsPick();
 	}, [posts]);
-	// for (let i = 0; i < posts.length; i++) 
-	// 	console.log(posts[i].article_category?.category_name);
-
-
+	
 	return (
 		<motion.div
 			className="flex flex-col gap-4"

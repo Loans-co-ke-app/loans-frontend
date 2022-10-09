@@ -41,8 +41,6 @@ const SingleBlogPostPage = () => {
 	React.useEffect(() => {
 		fetchSinglePost();
 	}, [slug]);
-	console.log(post);
-	
 
 	return (
 		<AdLayout>
