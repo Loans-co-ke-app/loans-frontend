@@ -30,38 +30,38 @@ const navLinks: INavRoute[] = [
 			{
 				name: 'Regulatory',
 				hasChildren: false,
-				path: '/categories/regulatory',
+				path: '/categories/loans/regulatory',
 				icon: faHome
 			},
 			{
 				name: 'Telcos',
 				hasChildren: false,
-				path: '/categories/telcos',
+				path: '/categories/loans/telcos',
 				icon: faHome
 			},
 			{
 				name: 'Pension',
 				hasChildren: false
 				,
-				path: '/categories/pension',
+				path: '/categories/loans/pension',
 				icon: faHome
 			},
 			{
 				name: 'Insurance',
 				hasChildren: false,
-				path: '/categories/insurance',
+				path: '/categories/loans/insurance',
 				icon: faHome
 			},
 			{
 				name: 'Capital Market',
 				hasChildren: false,
-				path: '/categories/capital-market',
+				path: '/categories/loans/capital-market',
 				icon: faHome
 			},
 			{
 				name: 'Banking',
 				hasChildren: false,
-				path: '/categories/banking',
+				path: '/categories/loans/banking',
 				icon: faHome
 			}
 		]

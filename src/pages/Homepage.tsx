@@ -172,9 +172,9 @@ const Homepage = () => {
 								{post.article_title}
 							</h1>
 							<div>
-								<HtmlDecoder
+								{post.article_body&&<HtmlDecoder
 									html={post.article_body.slice(0, 110)}
-								/>
+								/>}
 							</div>
 						</div>
 					</Link>
