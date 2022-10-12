@@ -10,8 +10,13 @@ import { subRegex } from '../helpers/subRegex';
 import { useParams } from 'react-router-dom';
 import { INavRoute, navLinks } from '../data/nav';
 
+type Params = {
+	loanCategory: string;
+	loanSubCategory: string;
+};
+
 const LoansPage = () => {
-	const { loanCategory, loanSubCategory } = useParams();
+	const params = useParams<Params>() as Params;
 	const [loanCategoryNames, setLoanCategorynames] = React.useState<string[]>(
 		[]
 	);
@@ -33,18 +38,35 @@ const LoansPage = () => {
 					subRegex,
 					'-'
 				).toLowerCase();
-				console.log({'category':cat,loanCategoryNames});
-
 				const valid = loanCategoryNames.includes(cat);
 
 				return valid;
 			});
-			// console.log('NP-Map', ufp, p);
+			const fp = ufp.filter((p) => {
+				const cat = TrimRegex.trimAndReplace(
+					p.article_category!.category_name!,
+					subRegex,
+					'-'
+				).toLowerCase();
+				const valid = (cat === params.loanSubCategory!);
+
+				return valid;
+			});
+			console.log(fp,ufp);
+			
+			if (fp.length >= 1) {
+				setFilteredPosts(fp);
+				
+				return;
+			}
+			
+			
+			return setFilteredPosts(ufp);
 		}
 	};
 	React.useEffect(() => {
 		const cat = navLinks.find(
-			(n) => n.name.toLowerCase() === loanCategory?.toLowerCase()
+			(n) => n.name.toLowerCase() === params.loanCategory?.toLowerCase()
 		);
 		if (cat) setCurrentCategory(cat);
 		if (currentcategory.hasChildren) {
@@ -53,13 +75,15 @@ const LoansPage = () => {
 			);
 			setLoanCategorynames(p!);
 		}
-	}, []);
+	}, [params]);
 	React.useEffect(() => {
-		console.log('-------------------');
-		
 		filterPosts();
-	}, [currentcategory, loanCategory, loanSubCategory,unsortedPosts]);
-	const p = useParams();
+	}, [
+		currentcategory,
+		params,
+		unsortedPosts,
+		params
+	]);
 
 	return (
 		<motion.div
@@ -86,7 +110,7 @@ const LoansPage = () => {
 												subRegex,
 												'-'
 											).toLowerCase() ===
-													loanSubCategory?.toLowerCase() &&
+													params.loanSubCategory?.toLowerCase() &&
 											'border-b border-black'
 											: 'text-yellow-600'
 									}`}
@@ -96,9 +120,31 @@ const LoansPage = () => {
 							</div>
 						))}
 				</div>
-				{/* {categories.map((item) => {
-					return <div key={item.name}>{item.name}</div>;
-				})} */}
+				<div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4 py-4">
+					{filteredPosts.length > 0 ? (
+						filteredPosts.map((post) => (
+							<Link to={`/blog/${post.slug}`} key={post.slug} className="group">
+								<div className="h-96 w-full relative overflow-hidden">
+									<img
+										src={post.featured_image}
+										alt=""
+										className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-linear"
+									/>
+								</div>
+								<div>
+									<div className="text-sm text-gray-500">
+										{post.sector_category}
+									</div>
+									<div className="text-lg font-bold">
+										{post.article_title}
+									</div>
+								</div>
+							</Link>
+						))
+					) : (
+						<div>No posts found</div>
+					)}
+				</div>
 			</div>
 		</motion.div>
 	);

@@ -40,7 +40,7 @@ const appRoutes: IRouteProps[] = [
 		Component: <Loanspage />,
 		isNested: false,
 		pathName: 'Loanspage',
-		urlPath: '/categories/:loanCategory/:loadnSubCategory',
+		urlPath: '/categories/:loanCategory/:loanSubCategory',
 	},
 	{
 		Component: <SectorsPage />,

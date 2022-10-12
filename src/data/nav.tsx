@@ -24,7 +24,7 @@ const navLinks: INavRoute[] = [
 			{
 				name: 'Finance holding',
 				hasChildren: false,
-				path: '/categories/loans/financial-holding',
+				path: '/categories/loans/finance-holding',
 				icon: faHome
 			},
 			{
