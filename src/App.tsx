@@ -38,7 +38,7 @@ const App = () => {
 					type: 'FEATURED_POST_LOAD_SUCCESS',
 					payload: { ...data }
 				});
-			}, 2000);
+			}, 1000);
 		} catch (error: any) {
 			if (error instanceof AxiosError) {
 				featuredPostDispatch({
