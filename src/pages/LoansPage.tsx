@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-extra-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import AdLayout from '../layout/AdLayout';
 import { IPostEntity } from '../interfaces/Post';
 import { Link } from 'react-router-dom';
 import { PostsContext } from '../state/providers/PostsProvider';
@@ -75,16 +76,19 @@ const LoansPage = () => {
 			);
 			setLoanCategorynames(p!);
 		}
-	}, [params]);
+	}, [params.loanCategory, currentcategory, unsortedPosts]);
 	React.useEffect(() => {
 		filterPosts();
 	}, [
 		currentcategory,
-		params,
+		params.loanCategory,
+		params.loanSubCategory,
 		unsortedPosts,
+		loanCategoryNames,
+		unsortedPosts.length,
 		params
 	]);
-
+	
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -120,31 +124,33 @@ const LoansPage = () => {
 							</div>
 						))}
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4 py-4">
-					{filteredPosts.length > 0 ? (
-						filteredPosts.map((post) => (
-							<Link to={`/blog/${post.slug}`} key={post.slug} className="group">
-								<div className="h-96 w-full relative overflow-hidden">
-									<img
-										src={post.featured_image}
-										alt=""
-										className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-linear"
-									/>
-								</div>
-								<div>
-									<div className="text-sm text-gray-500">
-										{post.sector_category}
+				<AdLayout>
+					<div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4 py-4">
+						{filteredPosts.length > 0 ? (
+							filteredPosts.map((post) => (
+								<Link to={`/blog/${post.slug}`} key={post.slug} className="group">
+									<div className="h-96 w-full relative overflow-hidden">
+										<img
+											src={post.featured_image}
+											alt=""
+											className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-linear"
+										/>
 									</div>
-									<div className="text-lg font-bold">
-										{post.article_title}
+									<div>
+										<div className="text-sm text-gray-500">
+											{post.sector_category}
+										</div>
+										<div className="text-lg font-bold">
+											{post.article_title}
+										</div>
 									</div>
-								</div>
-							</Link>
-						))
-					) : (
-						<div>No posts found</div>
-					)}
-				</div>
+								</Link>
+							))
+						) : (
+							<div>No posts found</div>
+						)}
+					</div>
+				</AdLayout>
 			</div>
 		</motion.div>
 	);
