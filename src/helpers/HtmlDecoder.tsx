@@ -7,7 +7,7 @@ const HtmlDecoder = ({ html }: { html: string, exerpt?: boolean }) => {
 	// {
 	//     __html: exerpt ? he.decode(html).substring(0,200) : he.decode(html)
 	// }
-		<div dangerouslySetInnerHTML={{ __html: he.decode(html) }} />
+		<span dangerouslySetInnerHTML={{ __html: he.decode(html) }} />
 
 	);
 };

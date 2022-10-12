@@ -6,6 +6,7 @@ import { AxiosError } from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HtmlDecoder from '../helpers/HtmlDecoder';
 import { IPostEntity } from '../interfaces/Post';
+import { LoaderComponent } from 'react-fullscreen-loader';
 import React from 'react';
 import { axiosQuery } from '../api';
 import { faFeed } from '@fortawesome/free-solid-svg-icons';
@@ -51,7 +52,7 @@ const SingleBlogPostPage = () => {
 					exit={{ opacity: 0 }}
 					transition={{ duration: 3 }}
 				>
-					<div className="px-4">
+					<div className="px-4 py-4">
 						<div></div>
 						<div className="w-full h-96 relative">
 							<img
@@ -76,12 +77,12 @@ const SingleBlogPostPage = () => {
 							{post.article_body &&
 								HtmlDecoder({ html: post?.article_body! })}
 						</div>
-						<div className="border my-3 flex gap-2">
-							<div className="w-2/5 h-full bg-gray-300 p-4">
+						<div className="border my-3 flex gap-2 items-center flex-col md:flex-row">
+							<div className="md:w-80 px-4 h-full flex flex-col justify-center items-center">
 								<img
-									src={'/user.svg'}
+									src={post.authors?.author_avatar}
 									alt=""
-									className="w-full h-1/2"
+									className="w-full h-1/2 rounded-full md:rounded-none"
 								/>
 								<div className="text-[.85rem]">
 									<span>{`${post.authors?.first_name!} ${post
@@ -119,11 +120,15 @@ const SingleBlogPostPage = () => {
 						</div>
 					</div>
 				</motion.div>
-			) : err ? (
+			) : !loading && err ? (
 				<>
 					<h1>An error occured</h1>
 				</>
-			) : <></>}
+			) : (
+				<>
+					<LoaderComponent loading 	/>
+				</>
+			)}
 		</AdLayout>
 	);
 };

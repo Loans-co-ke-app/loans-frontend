@@ -17,7 +17,7 @@ const AdLayout = ({ children }: IProps) => {
 	} = React.useContext(PostsContext);
 
 	return (
-		<div className="flex flex-col md:flex-row flex-wrap">
+		<div className="flex flex-col md:flex-row flex-wrap gap-4 py-4">
 			<div className="flex-[8]">{children}</div>
 			<div className="flex-[4]">
 				<div>
@@ -63,7 +63,7 @@ const AdLayout = ({ children }: IProps) => {
 									</h2>
 									<div className="flex items-center gap-3">
 										<img
-											src="/img.webp"
+											src={post.authors.author_avatar}
 											alt=""
 											className="h-12 w-12 rounded-full object-cover"
 										/>
