@@ -53,7 +53,6 @@ const LoansPage = () => {
 
 				return valid;
 			});
-			console.log(fp,ufp);
 			
 			if (fp.length >= 1) {
 				setFilteredPosts(fp);
