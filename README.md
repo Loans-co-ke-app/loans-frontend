@@ -10,3 +10,4 @@ To build
 ```sh
 pnpm build
 ```
+[![CI status](https://github.com/Loans-co-ke-app/loans-frontend/actions/workflows/main.yml/badge.svg)](https://github.com/Loans-co-ke-app/loans-frontend/actions/workflows/main.yml)
