@@ -58,7 +58,7 @@ const Homepage = () => {
 			{/* Header  featured post */}
 			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 py-4 border-b">
 				{sponsoredPost.is_sponsored ? (
-					<div className="flex flex-col gap-4">
+					<Link to={`/blog/${sponsoredPost.slug}`} className="flex flex-col gap-4">
 						<p className="text-center text-purple-600">
 							{sponsoredPost.article_category?.category_name}
 						</p>
@@ -105,7 +105,7 @@ const Homepage = () => {
 								</div>
 							</div>
 						</div>
-					</div>
+					</Link>
 				) : (
 					<div className="flex flex-col gap-4">
 						<p className="text-center text-purple-600">
@@ -115,18 +115,14 @@ const Homepage = () => {
 							<h2 className="text-lg font-bold">
 								{sponsoredPost.article_title}
 							</h2>
-							<p className="text-sm">
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Dolor, tempore! Consectetur
-								natus voluptatibus consequatur doloribus
-								quaerat!
-							</p>
+							<div className="text-sm flex flex-col gap-2">
+								{[1, 2, 3, 4].map((p) => (
+									<span className="w-full h-3 bg-slate-200 rounded-md" key={p}></span>
+								))}
+							</div>
 						</div>
 						<div className="border-l border-gray-400 pl-2 flex flex-col gap-3">
-							<p className="font-medium">
-								Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Vitae, deleniti.
-							</p>
+							<p className="font-medium h-2 w-full bg-gray-200"></p>
 							<div>
 								<p className="font-medium">
 									<FontAwesomeIcon
@@ -134,16 +130,12 @@ const Homepage = () => {
 										className="text-purple-600 mr-3"
 									/>
 									<span>
-										Lorem ipsum dolor sit amet consectetur.
+										{/* Lorem ipsum dolor sit amet consectetur. */}
 									</span>
 								</p>
 								<div className="flex items-center gap-3">
-									<img
-										src="/img.webp"
-										alt=""
-										className="h-12 w-12 border-gray-300 border-2 rounded-full object-cover"
-									/>
-									<span>Jane Doe</span>
+									<div className="h-12 w-12 rounded-full bg-slate-200"></div>
+									<span className="h-2 w-full bg-slate-200"></span>
 								</div>
 							</div>
 						</div>
@@ -151,9 +143,11 @@ const Homepage = () => {
 				)}
 				{/* Skeleton loading  */}
 				{featuredPostLoading ? (
-					<div className="flex flex-col gap-4 w-full bg-gray-400 h-96">
+					<div className="flex flex-col gap-4 w-full bg-gray-100 h-96">
 						<div className="w-full h-3/4 bg-gray-200 animate-pulse"></div>
-						<div className="px-4 bg-gray-300 animate-bounce rounded-md h-10"></div>
+						<div className="px-4 bg-gray-200 animate-bounce rounded-md h-10"></div>
+						<div className="px-4 bg-gray-200 animate-bounce rounded-md h-10"></div>
+						<div className="px-4 bg-gray-200 animate-bounce rounded-md h-10"></div>
 					</div>
 				) : (
 					<Link to={`/blog/${post.slug}`} className="w-full ">
@@ -172,16 +166,18 @@ const Homepage = () => {
 								{post.article_title}
 							</h1>
 							<div>
-								{post.article_body&&<HtmlDecoder
-									html={post.article_body.slice(0, 110)}
-								/>}
+								{post.article_body && (
+									<HtmlDecoder
+										html={post.article_body.slice(0, 110)}
+									/>
+								)}
 							</div>
 						</div>
 					</Link>
 				)}
 				{/* Editors pick */}
 				{editorsPick.is_editors_pick ? (
-					<div>
+					<Link to={`/blog/${editorsPick.slug}`}>
 						<p>Editor's pick</p>
 						<div className="w-full">
 							<div className="relative">
@@ -191,6 +187,9 @@ const Homepage = () => {
 									className="w-full h-60 object-cover"
 								/>
 							</div>
+							<h1 className="text-xl font-bold">
+								{sponsoredPost.article_title}
+							</h1>
 							<p className="text-lg font-medium">
 								<FontAwesomeIcon icon={faQuoteLeft} />{' '}
 								<div>
@@ -203,7 +202,7 @@ const Homepage = () => {
 								</div>
 							</p>
 						</div>
-					</div>
+					</Link>
 				) : (
 					<div>
 						<p>Editor's pick</p>
