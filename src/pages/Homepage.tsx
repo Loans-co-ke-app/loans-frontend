@@ -46,7 +46,6 @@ const Homepage = () => {
 		filterSponsoredPost();
 		filterEditotorsPick();
 	}, [posts]);
-	console.log(posts);
 
 	return (
 		<motion.div
