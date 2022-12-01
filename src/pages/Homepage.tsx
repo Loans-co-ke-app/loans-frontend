@@ -184,7 +184,9 @@ const Homepage = () => {
 				{/* Editors pick */}
 				{editorsPick.is_editors_pick ? (
 					<Link to={`/blog/${editorsPick.slug}`}>
-						<p>Editor's pick</p>
+						<p className="text-purple-600 font-bold text-medium">
+							Editor's pick
+						</p>
 						<div className="w-full">
 							<div className="relative">
 								<img
