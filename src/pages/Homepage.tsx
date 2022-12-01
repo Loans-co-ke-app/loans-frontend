@@ -58,7 +58,10 @@ const Homepage = () => {
 			{/* Header  featured post */}
 			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 py-4 border-b">
 				{sponsoredPost.is_sponsored ? (
-					<Link to={`/blog/${sponsoredPost.slug}`} className="flex flex-col gap-4">
+					<Link
+						to={`/blog/${sponsoredPost.slug}`}
+						className="flex flex-col gap-4"
+					>
 						<p className="text-center text-purple-600">
 							{sponsoredPost.article_category?.category_name}
 						</p>
@@ -117,7 +120,10 @@ const Homepage = () => {
 							</h2>
 							<div className="text-sm flex flex-col gap-2">
 								{[1, 2, 3, 4].map((p) => (
-									<span className="w-full h-3 bg-slate-200 rounded-md" key={p}></span>
+									<span
+										className="w-full h-3 bg-slate-200 rounded-md"
+										key={p}
+									></span>
 								))}
 							</div>
 						</div>
@@ -193,12 +199,14 @@ const Homepage = () => {
 							<p className="text-lg font-medium">
 								<FontAwesomeIcon icon={faQuoteLeft} />{' '}
 								<div>
-									<HtmlDecoder
-										html={sponsoredPost.article_body.slice(
-											0,
-											110
-										)}
-									/>
+									{sponsoredPost.article_body && (
+										<HtmlDecoder
+											html={sponsoredPost.article_body.slice(
+												0,
+												110
+											)}
+										/>
+									)}
 								</div>
 							</p>
 						</div>

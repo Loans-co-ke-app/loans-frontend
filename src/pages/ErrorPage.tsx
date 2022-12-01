@@ -1,8 +1,12 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const NotFoundPage = () => {
+import { Link, useRouteError } from 'react-router-dom';
+
+const ErrorPage = () => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const error = useRouteError() as any;
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -17,9 +21,13 @@ const NotFoundPage = () => {
 			<div className="flex flex-col gap-2 py-6">
 				{/* <h1 className='text-4xl font-bold'>404</h1> */}
 				<p className="text-lg font-medium">
-          Page not found back to{' '}
+					<strong>
+						Error: {error?.status}{' '}
+						{error?.statusText ? error?.statusText : 'Not Found'}
+					</strong>
+					<br />
 					<Link to={'/'} className="font-bold text-xl text-blue-700">
-            Homepage
+						Go back to Homepage
 					</Link>
 				</p>
 			</div>
@@ -27,5 +35,5 @@ const NotFoundPage = () => {
 	);
 };
 
-export default NotFoundPage;
+export default ErrorPage;
 // CS-PhySci

@@ -1,128 +1,44 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import BaseLayout from '../layout/BaseLayout';
+/* eslint-disable @typescript-eslint/naming-convention */
+import ErrorPage from './../pages/ErrorPage';
 import Homepage from './../pages/Homepage';
+import LayoutWrap from '../layout/LayoutWrap';
 import Loanspage from '../pages/LoansPage';
-import NotFoundPage from './../pages/NotFoundPage';
 import React from 'react';
 import SectorsPage from '../pages/SectorsPage';
 import SingleBlogPage from './../pages/SingleBlogPostPage';
-import TopScroll from '../helpers/TopScroll';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 
-interface IRouteProps {
-	pathName: string;
-	urlPath: string;
-	Component: React.ReactElement;
-	isNested: boolean;
-	children?: IRouteProps[];
-}
-
-const appRoutes: IRouteProps[] = [
+export const router = createBrowserRouter([
 	{
-		Component: <Homepage />,
-		isNested: false,
-		pathName: 'Home',
-		urlPath: '/',
+		element: <LayoutWrap Component={Homepage} Layout={BaseLayout} />,
+		id: 'Homepage',
+		path: '/',
+		errorElement: <ErrorPage />
 	},
 	{
-		Component: <SingleBlogPage />,
-		isNested: false,
-		pathName: 'SingleBlogPost',
-		urlPath: '/blog/:slug',
+		element: <LayoutWrap Component={SingleBlogPage} Layout={BaseLayout} />,
+		id: 'SingleBlogPost',
+		path: '/blog/:slug'
 	},
 	{
-		Component: <NotFoundPage />,
-		isNested: false,
-		pathName: 'NotFound',
-		urlPath: '*',
+		element: <ErrorPage />,
+		id: 'NotFound',
+		path: '*'
 	},
 	{
-		Component: <Loanspage />,
-		isNested: false,
-		pathName: 'Loanspage',
-		urlPath: '/categories/:loanCategory/:loanSubCategory',
+		element: <LayoutWrap Component={Loanspage} Layout={BaseLayout} />,
+		id: 'Loanspage Sub category',
+		path: '/categories/:loanCategory/:loanSubCategory'
 	},
 	{
-		Component: <SectorsPage />,
-		isNested: false,
-		pathName: 'Loanspage',
-		urlPath: '/sectors/:sector/:subSector',
-
+		element: <LayoutWrap Component={SectorsPage} Layout={BaseLayout} />,
+		id: 'Loanspage Sub sector',
+		path: '/sectors/:sector/:subSector'
 	},
 	{
-		Component: <SectorsPage />,
-		isNested: false,
-		pathName: 'Loanspage',
-		urlPath: '/sectors/:sector',
-
+		element: <LayoutWrap Component={SectorsPage} Layout={BaseLayout} />,
+		id: 'Sector Page ',
+		path: '/sectors/:sector'
 	}
-];
-
-const AppRouter = () => {
-	return (
-		<HashRouter>
-			<TopScroll />
-			<BaseLayout>
-				<Routes>
-					{appRoutes.map(
-						({
-							Component: MComponent,
-							isNested: MIsNested,
-							pathName: MPathname,
-							urlPath: MUrlPath,
-							children: MChildren,
-						}) => {
-							return MIsNested ? (
-								<Route path={MUrlPath} element={MComponent}>
-									{MChildren?.map(
-										({
-											Component: C1Component,
-											isNested: C1IsNested,
-											urlPath: C1UrlPath,
-											children: C1Children,
-										}) => {
-											return C1IsNested ? (
-												<Route path={C1UrlPath} element={C1Component}>
-													{C1Children?.map(
-														({
-															Component: C2Component,
-															urlPath: C2UrlPath,
-														}) => {
-															return (
-																<Route key={C2UrlPath} path={C2UrlPath} element={C2Component} />
-															);
-														}
-													)}
-												</Route>
-											) : (
-												<Route path={C1UrlPath} element={C1Component} />
-											);
-										}
-									)}
-								</Route>
-							) : (
-								<Route path={MUrlPath} element={MComponent} key={MPathname} />
-							);
-						}
-					)}
-				</Routes>
-			</BaseLayout>
-		</HashRouter>
-	);
-};
-
-// function AppRouter() {
-//     return (
-//         <HashRouter>
-//             <BaseLayout>
-//                 <Routes>
-//                     {appRoutes.map((route) => (
-//                         <Route path={route.urlPath} key={route.pathName} element={route.Component} />
-//                     ))}
-//                 </Routes>
-//             </BaseLayout>
-//         </HashRouter>
-//     );
-// }
-
-export default AppRouter;
+]);
