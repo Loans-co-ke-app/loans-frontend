@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import React from 'react';
 
 interface IProps {
-    children: JSX.Element
+    children: JSX.Element|React.ReactNode;
 }
 
 const BaseLayout = ({ children }: IProps) => {

@@ -1,10 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import AppRouter from './router';
 import { AxiosError } from 'axios';
 import { FeaturedPostContext } from './state/providers/FeaturedPostprovider';
 import { PostsContext } from './state/providers/PostsProvider';
 import React from 'react';
+import { RouterProvider } from 'react-router-dom';
 import { axiosQuery } from './api';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import  { router } from './router';
 
 const App = () => {
 	const { dispatch: postsDispatchFunction } = React.useContext(PostsContext);
@@ -55,7 +56,7 @@ const App = () => {
 		fetchPosts();
 	}, []);
 
-	return <AppRouter />;
+	return <RouterProvider router={router} />;
 };
 
 export default App;
