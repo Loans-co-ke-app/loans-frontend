@@ -3,9 +3,11 @@ import { FeaturedPostContext } from './state/providers/FeaturedPostprovider';
 import { PostsContext } from './state/providers/PostsProvider';
 import React from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { axiosQuery } from './api';
+import { axiosQuery, TRACKING_ID } from './api';
+import ReactGa from 'react-ga';
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import  { router } from './router';
+import { router } from './router';
+ReactGa.initialize(TRACKING_ID);
 
 const App = () => {
 	const { dispatch: postsDispatchFunction } = React.useContext(PostsContext);
@@ -26,6 +28,7 @@ const App = () => {
 			}
 		}
 	};
+
 	const fetchFeaturedPost = async () => {
 		try {
 			featuredPostDispatch({
@@ -54,6 +57,10 @@ const App = () => {
 	}, []);
 	React.useEffect(() => {
 		fetchPosts();
+	}, []);
+	// initialize google analytics page view tracking
+	React.useEffect(() => {
+		ReactGa.pageview(window.location.pathname + window.location.search);
 	}, []);
 
 	return <RouterProvider router={router} />;
