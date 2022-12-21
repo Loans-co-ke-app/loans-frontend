@@ -36,7 +36,7 @@ const Homepage = () => {
 
 	return (
 		<div>
-			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 py-4 border-b">
+			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 py-4 border-b leading-5 text-left">
 				{sponsoredArticle ? (
 					<Link
 						to={`/blog/${sponsoredArticle.slug}`}
@@ -49,12 +49,9 @@ const Homepage = () => {
 							<h2 className="text-lg font-bold">
 								{sponsoredArticle.article_title}
 							</h2>
-							<div className="leading-6">
+							<div className="text-left leading-6">
 								<HtmlDecoder
-									html={sponsoredArticle.article_body.slice(
-										0,
-										110
-									)}
+									html={sponsoredArticle.excerpt}
 								/>
 							</div>
 						</div>
@@ -148,13 +145,10 @@ const Homepage = () => {
 							<h1 className="text-2xl font-bold">
 								{featuredArticle.article_title}
 							</h1>
-							<div>
+							<div className='text-left leading-6'>
 								{featuredArticle.article_body && (
 									<HtmlDecoder
-										html={featuredArticle.article_body.slice(
-											0,
-											110
-										)}
+										html={featuredArticle.excerpt}
 									/>
 								)}
 							</div>
@@ -180,13 +174,10 @@ const Homepage = () => {
 							</h1>
 							<div className="text-lg font-medium">
 								<FontAwesomeIcon icon={faQuoteLeft} />{' '}
-								<div>
+								<div className='text-left leading-6'>
 									{editorsPick!.article_body && (
 										<HtmlDecoder
-											html={editorsPick!.article_body.slice(
-												0,
-												110
-											)}
+											html={editorsPick!.excerpt}
 										/>
 									)}
 								</div>
