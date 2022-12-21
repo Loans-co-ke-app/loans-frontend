@@ -94,7 +94,7 @@ const SingleBlogPostPage = () => {
 									About the author
 								</h1>
 								<p>
-									{post.authors.author_description&&post.authors.author_description}
+									{post.authors.author_description?post.authors.author_description:''}
 								</p>
 								<div className="py-2 flex items-center gap-2">
 									<FontAwesomeIcon

@@ -2,11 +2,11 @@ import { AxiosError } from 'axios';
 import { FeaturedPostContext } from './state/providers/FeaturedPostprovider';
 import { PostsContext } from './state/providers/PostsProvider';
 import React from 'react';
-import { RouterProvider } from 'react-router-dom';
-import { axiosQuery, TRACKING_ID } from './api';
 import ReactGa from 'react-ga';
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
+import { TRACKING_ID, axiosQuery } from './api';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 ReactGa.initialize(TRACKING_ID);
 
 const App = () => {
@@ -37,12 +37,10 @@ const App = () => {
 			});
 			const res = await axiosQuery.get('/article_featured/');
 			const data = res.data[0];
-			setTimeout(() => {
-				featuredPostDispatch({
-					type: 'FEATURED_POST_LOAD_SUCCESS',
-					payload: { ...data }
-				});
-			}, 1000);
+			featuredPostDispatch({
+				type: 'FEATURED_POST_LOAD_SUCCESS',
+				payload: { ...data }
+			});
 		} catch (error: any) {
 			if (error instanceof AxiosError) {
 				featuredPostDispatch({
