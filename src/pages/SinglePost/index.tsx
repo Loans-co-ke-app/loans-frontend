@@ -17,7 +17,7 @@ import bg from './../../assets/bg.webp';
 import moment from 'moment';
 import HtmlDecoder from '../../helpers/HtmlDecoder';
 import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
-
+import avatar from './../../assets/user.png';
 const loader = async ({
 	params
 }: LoaderFunctionArgs): Promise<SinglePostResponse> => {
@@ -30,7 +30,7 @@ const loader = async ({
 
 const SinglePost = () => {
 	const { data } = useLoaderData() as SinglePostResponse;
-	
+
 	return (
 		<div>
 			{data === undefined ? (
@@ -97,7 +97,7 @@ const SinglePost = () => {
 						<div className="border my-3 flex gap-2 items-center flex-col md:flex-row">
 							<div className="md:w-80 px-4 h-full flex flex-col justify-center items-center">
 								<img
-									src={data.authors?.author_avatar}
+									src={avatar}
 									alt=""
 									className="w-full h-1/2 rounded-full md:rounded-none"
 								/>
