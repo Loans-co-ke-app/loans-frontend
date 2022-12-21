@@ -4,6 +4,7 @@ export interface IPostEntity {
 	article_company?: any;
 	article_product?: any;
 	article_title: string;
+	excerpt: string;
 	featured: boolean;
 	is_sponsored: boolean;
 	is_editors_pick: boolean;
