@@ -31,35 +31,35 @@ const postsReducer = (
 	}>
 ): IInitialState => {
 	switch (action.type) {
-		case 'POST_LOAD_START':
-			return {
-				...state,
-				postsState: {
-					failure: false,
-					loading: true,
-					posts: []
-				}
-			};
-		case 'POST_LOAD_SUCCESS':
-			return {
-				...state,
-				postsState: {
-					failure: false,
-					posts: [...(action.payload as IPostEntity[])],
-					loading: false
-				}
-			};
-		case 'LOAD_POST_FAILURE':
-			return {
-				...state,
-				postsState: {
-					failure: true,
-					posts: [],
-					loading: false
-				}
-			};
-		default:
-			return state;
+	case 'POST_LOAD_START':
+		return {
+			...state,
+			postsState: {
+				failure: false,
+				loading: true,
+				posts: []
+			}
+		};
+	case 'POST_LOAD_SUCCESS':
+		return {
+			...state,
+			postsState: {
+				failure: false,
+				posts: [...(action.payload as IPostEntity[])],
+				loading: false
+			}
+		};
+	case 'LOAD_POST_FAILURE':
+		return {
+			...state,
+			postsState: {
+				failure: true,
+				posts: [],
+				loading: false
+			}
+		};
+	default:
+		return state;
 	}
 };
 
