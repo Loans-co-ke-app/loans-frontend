@@ -1,7 +1,7 @@
 import BaseLayout from '../layout/BaseLayout';
 /* eslint-disable @typescript-eslint/naming-convention */
 import ErrorPage from './../pages/ErrorPage';
-import Homepage from './../pages/Homepage';
+import Homepage from './../pages/Homepage/index';
 import LayoutWrap from '../layout/LayoutWrap';
 import Loanspage from '../pages/LoansPage';
 import React from 'react';
@@ -14,7 +14,8 @@ export const router = createBrowserRouter([
 		element: <LayoutWrap Component={Homepage} Layout={BaseLayout} />,
 		id: 'Homepage',
 		path: '/',
-		errorElement: <ErrorPage />
+		loader: Homepage.loader,
+		errorElement: <Homepage.ErrorElement />,
 	},
 	{
 		element: <LayoutWrap Component={SingleBlogPage} Layout={BaseLayout} />,
