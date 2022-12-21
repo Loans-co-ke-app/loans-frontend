@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FullPageLoader from '../../components/FullPageLoader';
@@ -6,7 +7,6 @@ import { SinglePostResponse } from './types';
 import { axiosQuery } from '../../api';
 import { faFeed, faShare } from '@fortawesome/free-solid-svg-icons';
 import { getPlatforms } from './utils';
-import styles from './styles.module.scss';
 import {
 	LoaderFunctionArgs,
 	useLoaderData,
@@ -30,8 +30,7 @@ const loader = async ({
 
 const SinglePost = () => {
 	const { data } = useLoaderData() as SinglePostResponse;
-	console.log(data);
-
+	
 	return (
 		<div>
 			{data === undefined ? (
