@@ -53,20 +53,9 @@
             "error",
             "multi-or-nest"
         ],
-        "sort-imports": [
+        "eqeqeq": [
             "error",
-            {
-                "ignoreCase": false,
-                "ignoreDeclarationSort": false,
-                "ignoreMemberSort": false,
-                "memberSyntaxSortOrder": [
-                    "none",
-                    "all",
-                    "single",
-                    "multiple"
-                ],
-                "allowSeparatedGroups": true
-            }
+            "always"
         ],
         "spaced-comment": [
             "error",

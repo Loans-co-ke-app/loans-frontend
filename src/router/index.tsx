@@ -6,7 +6,7 @@ import LayoutWrap from '../layout/LayoutWrap';
 import Loanspage from '../pages/LoansPage';
 import React from 'react';
 import SectorsPage from '../pages/SectorsPage';
-import SingleBlogPage from './../pages/SingleBlogPostPage';
+import SingleBlogPage from './../pages/SinglePost';
 import { createBrowserRouter } from 'react-router-dom';
 
 export const router = createBrowserRouter([
@@ -19,7 +19,9 @@ export const router = createBrowserRouter([
 	{
 		element: <LayoutWrap Component={SingleBlogPage} Layout={BaseLayout} />,
 		id: 'SingleBlogPost',
-		path: '/blog/:slug'
+		path: '/blog/:slug',
+		loader:SingleBlogPage.loader,
+		errorElement: <SingleBlogPage.ErrorElement/>
 	},
 	{
 		element: <ErrorPage />,
