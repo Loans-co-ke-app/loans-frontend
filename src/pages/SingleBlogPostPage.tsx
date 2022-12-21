@@ -94,12 +94,7 @@ const SingleBlogPostPage = () => {
 									About the author
 								</h1>
 								<p>
-									Lorem ipsum dolor sit amet consectetur
-									adipisicing elit. Dolore quos sapiente
-									praesentium sint. Voluptas, optio ducimus
-									modi officia sunt vel. Quisquam sed nemo nam
-									est laboriosam placeat perferendis soluta
-									illum.
+									{post.authors.author_description&&post.authors.author_description}
 								</p>
 								<div className="py-2 flex items-center gap-2">
 									<FontAwesomeIcon
