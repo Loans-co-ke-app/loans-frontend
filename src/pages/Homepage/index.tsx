@@ -5,7 +5,6 @@ import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AxiosError } from 'axios';
 import React from 'react';
-import { LoaderComponent } from 'react-fullscreen-loader';
 import { Link } from 'react-router-dom';
 import { useLoaderData, useRouteError } from 'react-router-dom';
 import { axiosQuery } from '../../api';
@@ -16,8 +15,7 @@ import { HomepageResponse } from './types';
 import avatar from './../../assets/user.png';
 
 const Homepage = () => {
-	const { articlesDispatch, featuredPostDispatch, articlesState } =
-		useAppState();
+	const { articlesDispatch, featuredPostDispatch } = useAppState();
 	const { featuredArticle, articles, editorsPick, sponsoredArticle } =
 		useLoaderData() as unknown as HomepageResponse;
 	React.useEffect(() => {
@@ -35,8 +33,6 @@ const Homepage = () => {
 			});
 		}
 	}, []);
-	const [loading, setLoading] = React.useState(false);
-	console.log({ featuredArticle, articles, editorsPick, sponsoredArticle });
 
 	return (
 		<div>
@@ -53,7 +49,7 @@ const Homepage = () => {
 							<h2 className="text-lg font-bold">
 								{sponsoredArticle.article_title}
 							</h2>
-							<div className='leading-6'>
+							<div className="leading-6">
 								<HtmlDecoder
 									html={sponsoredArticle.article_body.slice(
 										0,
@@ -63,7 +59,6 @@ const Homepage = () => {
 							</div>
 						</div>
 						<div className="border-l border-gray-400 pl-2 flex flex-col gap-3">
-							
 							<div>
 								<p className="font-medium">
 									<FontAwesomeIcon
@@ -76,9 +71,7 @@ const Homepage = () => {
 								</p>
 								<div className="flex items-center gap-3">
 									<img
-										src={
-											avatar
-										}
+										src={avatar}
 										alt=""
 										className="h-12 w-12 border-gray-300 border-2 rounded-full object-cover"
 									/>
@@ -221,7 +214,6 @@ const Homepage = () => {
 						</div>
 					</div>
 				)}
-				<LoaderComponent loading={loading} />
 			</div>
 		</div>
 	);
@@ -262,9 +254,8 @@ const loader = async (): Promise<HomepageResponse> => {
 
 			return data as IPostEntity;
 		} catch (error: any) {
-			if (error instanceof AxiosError) 
+			if (error instanceof AxiosError)
 				throw new Error(error.response?.data);
-			
 		}
 	};
 	const [articles, featuredArticle, editorsPick] = await Promise.all([

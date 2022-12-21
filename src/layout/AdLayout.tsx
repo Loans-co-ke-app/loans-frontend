@@ -5,6 +5,7 @@ import { PostsContext } from '../state/providers/PostsProvider';
 import React from 'react';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
+import avatar from '../assets/user.png';
 
 interface IProps {
 	children: JSX.Element;
@@ -63,7 +64,7 @@ const AdLayout = ({ children }: IProps) => {
 									</h2>
 									<div className="flex items-center gap-3">
 										<img
-											src={post.authors.author_avatar}
+											src={avatar}
 											alt=""
 											className="h-12 w-12 rounded-full object-cover"
 										/>
