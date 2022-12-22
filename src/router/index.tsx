@@ -1,7 +1,6 @@
 import BaseLayout from '../layout/BaseLayout';
 /* eslint-disable @typescript-eslint/naming-convention */
-import ErrorPage from './../pages/ErrorPage';
-import Homepage from './../pages/Homepage/index';
+import Homepage from './../pages/Homepage';
 import LayoutWrap from '../layout/LayoutWrap';
 import Loanspage from '../pages/LoansPage';
 import React from 'react';
@@ -25,23 +24,29 @@ export const router = createBrowserRouter([
 		errorElement: <SingleBlogPage.ErrorElement/>
 	},
 	{
-		element: <ErrorPage />,
+		element: <Homepage.ErrorElement />,
 		id: 'NotFound',
 		path: '*'
 	},
 	{
 		element: <LayoutWrap Component={Loanspage} Layout={BaseLayout} />,
 		id: 'Loanspage Sub category',
-		path: '/categories/:loanCategory/:loanSubCategory'
+		path: '/categories/:loanCategory/:loanSubCategory',
+		errorElement: <Loanspage.ErrorBoundary />,
+		loader:Homepage.loader
 	},
 	{
 		element: <LayoutWrap Component={SectorsPage} Layout={BaseLayout} />,
 		id: 'Loanspage Sub sector',
-		path: '/sectors/:sector/:subSector'
+		path: '/sectors/:sector/:subSector',
+		errorElement: <SectorsPage.ErrorBoundary />,
+		loader:Homepage.loader
 	},
 	{
 		element: <LayoutWrap Component={SectorsPage} Layout={BaseLayout} />,
 		id: 'Sector Page ',
-		path: '/sectors/:sector'
+		path: '/sectors/:sector',
+		errorElement: <SectorsPage.ErrorBoundary />,
+		loader:Homepage.loader
 	}
 ]);

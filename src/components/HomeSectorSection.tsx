@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import HomeSectorSectionItem from './HomeSectorSectionItem';
-import { IPostEntity } from '../interfaces/Post';
 import React from 'react';
+import useAppState from '../hooks/useAppState';
 
 const HomeSectorSection = ({
 	title,
-	posts,
 	loading
 }: {
   loading: boolean;
   title: string;
-  posts: IPostEntity[];
 }) => {
+	const {articlesState:{postsState:{posts}}}=useAppState();
 
 	return loading ? (
 		<div className="flex flex-col gap-3">
