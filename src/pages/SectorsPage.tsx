@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { IPostEntity } from '../interfaces/Post';
-import { Link } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
 import { PostsContext } from '../state/providers/PostsProvider';
 import React from 'react';
 import trimRegex from '../helpers/trimRegex';
 import { useParams } from 'react-router-dom';
 import { INavRoute, navLinks } from '../data/nav';
+import HtmlDecoder from '../helpers/HtmlDecoder';
 
 const subRegex = new RegExp(/[\s_]/gm);
 
@@ -131,4 +133,28 @@ const SectorsPage = () => {
 	);
 };
 
-export default SectorsPage;
+const ErrorElement = () => {
+	const err =useRouteError() as any;
+
+	return (
+		<div className="flex items-center text-center font-bold justify-center h-screen p-10 flex-col">
+			<div>
+				{err.statusText}
+				{err.status}
+				<code >
+					<HtmlDecoder html={err.message} />
+				</code>
+			</div>
+			<p className="py-4">
+				Back to{' '}
+				<Link to="/" className="text-blue-500">
+					Homepage
+				</Link>
+			</p>
+		</div>
+	);
+};
+
+export default Object.assign(SectorsPage, {
+	ErrorBoundary: ErrorElement,
+});

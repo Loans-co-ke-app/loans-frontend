@@ -42,9 +42,9 @@ const HomeSectorSectionItem = ({
 					<div className="h-full w-full absolute top-0 px-2 z-10">
 						{StatusBadge(post.sector_category!)}
 						{post.article_company}
-						<span className="bg-purple-400 text-white rounded-md text-[12px] px-2 py-1">
+						{/* <span className="bg-purple-400 text-white rounded-md text-[12px] px-2 py-1">
 							{post.article_category?.category_name}
-						</span>
+						</span> */}
 						<div className="">
 							<FontAwesomeIcon
 								icon={faBookmark}

@@ -5,4 +5,5 @@ export type HomepageResponse = {
 	featuredArticle: IPostEntity | undefined;
 	sponsoredArticle: IPostEntity | undefined;
     editorsPick: IPostEntity | undefined;
+    articleSectors?:string[] | undefined;
 };

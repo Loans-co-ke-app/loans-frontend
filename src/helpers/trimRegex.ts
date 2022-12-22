@@ -10,4 +10,4 @@ class TrimRegex {
 
 }
 
-export default  TrimRegex
+export default  TrimRegex;

@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-extra-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import AdLayout from '../layout/AdLayout';
 import { IPostEntity } from '../interfaces/Post';
-import { Link } from 'react-router-dom';
-import { PostsContext } from '../state/providers/PostsProvider';
+import { Link, useLoaderData, useRouteError } from 'react-router-dom';
 import React from 'react';
 import TrimRegex from '../helpers/trimRegex';
 import { motion } from 'framer-motion';
 import { subRegex } from '../helpers/subRegex';
 import { useParams } from 'react-router-dom';
 import { INavRoute, navLinks } from '../data/nav';
+import HtmlDecoder from '../helpers/HtmlDecoder';
+import { HomepageResponse } from './Homepage/types';
 
 type Params = {
 	loanCategory: string;
@@ -22,16 +24,13 @@ const LoansPage = () => {
 		[]
 	);
 	const [filteredPosts, setFilteredPosts] = React.useState<IPostEntity[]>([]);
-	const {
-		state: {
-			postsState: { posts: unsortedPosts }
-		}
-	} = React.useContext(PostsContext);
+	const { articles: unsortedPosts } = useLoaderData() as HomepageResponse;
 	const [currentcategory, setCurrentCategory] = React.useState<INavRoute>(
 		{} as INavRoute
 	);
 	const filterPosts = () => {
-		const p = unsortedPosts.slice();
+		const p = unsortedPosts!.slice();
+
 		if (p.length >= 1) {
 			const ufp = p.filter((p) => {
 				const cat = TrimRegex.trimAndReplace(
@@ -49,21 +48,21 @@ const LoansPage = () => {
 					subRegex,
 					'-'
 				).toLowerCase();
-				const valid = (cat === params.loanSubCategory!);
+				const valid = cat === params.loanSubCategory!;
 
 				return valid;
 			});
-			
+
 			if (fp.length >= 1) {
 				setFilteredPosts(fp);
-				
+
 				return;
 			}
-			
-			
+
 			return setFilteredPosts(ufp);
 		}
 	};
+
 	React.useEffect(() => {
 		const cat = navLinks.find(
 			(n) => n.name.toLowerCase() === params.loanCategory?.toLowerCase()
@@ -84,10 +83,10 @@ const LoansPage = () => {
 		params.loanSubCategory,
 		unsortedPosts,
 		loanCategoryNames,
-		unsortedPosts.length,
+		unsortedPosts!.length,
 		params
 	]);
-	
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -127,7 +126,11 @@ const LoansPage = () => {
 					<div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4 py-4">
 						{filteredPosts.length > 0 ? (
 							filteredPosts.map((post) => (
-								<Link to={`/blog/${post.slug}`} key={post.slug} className="group">
+								<Link
+									to={`/blog/${post.slug}`}
+									key={post.slug}
+									className="group"
+								>
 									<div className="h-96 w-full relative overflow-hidden">
 										<img
 											src={post.featured_image}
@@ -155,4 +158,28 @@ const LoansPage = () => {
 	);
 };
 
-export default LoansPage;
+const ErrorElement = () => {
+	const err = useRouteError() as any;
+
+	return (
+		<div className="flex items-center text-center font-bold justify-center h-screen p-10 flex-col">
+			<div>
+				{err.statusText}
+				{err.status}
+				<code className="">
+					<HtmlDecoder html={err.message} />
+				</code>
+			</div>
+			<p className="py-4">
+				Back to{' '}
+				<Link to="/" className="text-blue-500">
+					Homepage
+				</Link>
+			</p>
+		</div>
+	);
+};
+
+export default Object.assign(LoansPage, {
+	ErrorBoundary: ErrorElement
+});
