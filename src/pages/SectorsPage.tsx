@@ -10,7 +10,6 @@ import React from 'react';
 import trimRegex from '../helpers/trimRegex';
 import { useParams } from 'react-router-dom';
 import { INavRoute, navLinks } from '../data/nav';
-import HtmlDecoder from '../helpers/HtmlDecoder';
 
 const subRegex = new RegExp(/[\s_]/gm);
 
@@ -139,10 +138,11 @@ const ErrorElement = () => {
 	return (
 		<div className="flex items-center text-center font-bold justify-center h-screen p-10 flex-col">
 			<div>
-				{err.statusText}
+				{/* {err.statusText */}
 				{err.status}
-				<code >
-					<HtmlDecoder html={err.message} />
+				<code className="">
+					{/* <HtmlDecoder html={err.message} /> */}
+					<h2>Sorry😔 Something went wrong!</h2>
 				</code>
 			</div>
 			<p className="py-4">

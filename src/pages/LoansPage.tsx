@@ -10,7 +10,6 @@ import { motion } from 'framer-motion';
 import { subRegex } from '../helpers/subRegex';
 import { useParams } from 'react-router-dom';
 import { INavRoute, navLinks } from '../data/nav';
-import HtmlDecoder from '../helpers/HtmlDecoder';
 import { HomepageResponse } from './Homepage/types';
 
 type Params = {
@@ -164,10 +163,11 @@ const ErrorElement = () => {
 	return (
 		<div className="flex items-center text-center font-bold justify-center h-screen p-10 flex-col">
 			<div>
-				{err.statusText}
+				{/* {err.statusText */}
 				{err.status}
 				<code className="">
-					<HtmlDecoder html={err.message} />
+					{/* <HtmlDecoder html={err.message} /> */}
+					<h2>Sorry😔 Something went wrong!</h2>
 				</code>
 			</div>
 			<p className="py-4">
