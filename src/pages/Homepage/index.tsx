@@ -54,7 +54,6 @@ const Homepage = () => {
 					<HomeSectorSection
 						key={sector}
 						loading={false}
-						posts={articles!}
 						title={sector}
 					/>
 				))}
