@@ -10,6 +10,7 @@ import { getPlatforms } from './utils';
 import {
 	LoaderFunctionArgs,
 	useLoaderData,
+	useNavigation,
 	useRouteError
 } from 'react-router-dom';
 import AdLayout from '../../layout/AdLayout';
@@ -30,10 +31,12 @@ const loader = async ({
 
 const SinglePost = () => {
 	const { data } = useLoaderData() as SinglePostResponse;
+	const navigation = useNavigation();
+	
 
 	return (
 		<div>
-			{data === undefined ? (
+			{navigation.state==='loading' ? (
 				<FullPageLoader />
 			) : (
 				<AdLayout>

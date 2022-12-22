@@ -3,7 +3,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { AxiosError } from 'axios';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigation } from 'react-router-dom';
 import { useLoaderData, useRouteError } from 'react-router-dom';
 import { axiosQuery } from '../../api';
 import HtmlDecoder from '../../helpers/HtmlDecoder';
@@ -14,8 +14,11 @@ import SponsoredArticle from './components/SponsoredArticle';
 import FeaturedArticle from './components/FeaturedArticle.tsx';
 import EditorPickArticle from './components/EditorPickArticle';
 import HomeSectorSection from '../../components/HomeSectorSection';
+import FullPageLoader from '../../components/FullPageLoader';
 
 const Homepage = () => {
+	const navigation = useNavigation();
+
 	const { articlesDispatch, featuredPostDispatch } = useAppState();
 	const {
 		featuredArticle,
@@ -39,7 +42,9 @@ const Homepage = () => {
 		}
 	}, []);
 
-	return (
+	return navigation.state === 'loading' ? (
+		<FullPageLoader/>
+	) : (
 		<div>
 			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 py-4 border-b leading-5 text-left">
 				{/* Sponsored post */}
