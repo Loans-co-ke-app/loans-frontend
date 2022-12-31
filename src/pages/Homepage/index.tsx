@@ -15,6 +15,7 @@ import FeaturedArticle from './components/FeaturedArticle.tsx';
 import EditorPickArticle from './components/EditorPickArticle';
 import HomeSectorSection from '../../components/HomeSectorSection';
 import FullPageLoader from '../../components/FullPageLoader';
+import { Helmet } from 'react-helmet';
 
 const Homepage = () => {
 	const navigation = useNavigation();
@@ -42,28 +43,41 @@ const Homepage = () => {
 		}
 	}, []);
 
-	return navigation.state === 'loading' ? (
-		<FullPageLoader/>
-	) : (
-		<div>
-			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 py-4 border-b leading-5 text-left">
-				{/* Sponsored post */}
-				<SponsoredArticle sponsoredArticle={sponsoredArticle!} />
-				{/* Skeleton loading  */}
-				<FeaturedArticle article={featuredArticle!} />
-				{/* Editors pick */}
-				<EditorPickArticle article={editorsPick!} />
-			</div>
-			<div>
-				{articleSectors?.map((sector) => (
-					<HomeSectorSection
-						key={sector}
-						loading={false}
-						title={sector}
-					/>
-				))}
-			</div>
-		</div>
+	return (
+		<React.Fragment>
+			<Helmet>
+				<meta name="author" content="Brian" />
+				<meta name="keywords" content="Loans, Finance, Money" />
+				<meta charSet="UTF-8" />
+				{/* <base href="https://loans.co.ke/" target="_blank" /> */}
+				
+			</Helmet>
+			{navigation.state === 'loading' ? (
+				<FullPageLoader />
+			) : (
+				<div>
+					<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 py-4 border-b leading-5 text-left">
+						{/* Sponsored post */}
+						<SponsoredArticle
+							sponsoredArticle={sponsoredArticle!}
+						/>
+						{/* Skeleton loading  */}
+						<FeaturedArticle article={featuredArticle!} />
+						{/* Editors pick */}
+						<EditorPickArticle article={editorsPick!} />
+					</div>
+					<div>
+						{articleSectors?.map((sector) => (
+							<HomeSectorSection
+								key={sector}
+								loading={false}
+								title={sector}
+							/>
+						))}
+					</div>
+				</div>
+			)}
+		</React.Fragment>
 	);
 };
 
