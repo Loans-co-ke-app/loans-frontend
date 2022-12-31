@@ -49,7 +49,8 @@ const SinglePost = () => {
 						property="og:description"
 						content={data.article_title}
 					/>
-					<meta property="og:image" content={data?.featured_image} />
+					{/* <meta property="og:image" content={data?.featured_image} /> */}
+					<meta property="og:image" content="https://res.cloudinary.com/practicaldev/image/fetch/s--__dbnRkm--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/whms85xj936c018gbyw3.png"/>
 				</Helmet>
 			) : null}
 			<div>
