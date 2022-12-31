@@ -43,7 +43,7 @@ const Footer = () => {
 						</li>
 						<li className="flex items-center gap-2">
 							<FontAwesomeIcon icon={faEnvelope} />
-							<span>loans@loans.co.ke</span>
+							<span>info@loans.co.ke</span>
 						</li>
 						<li className="flex items-center gap-2">
 							<FontAwesomeIcon icon={faPhone} />
