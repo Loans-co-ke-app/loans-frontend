@@ -42,15 +42,23 @@ const Homepage = () => {
 			});
 		}
 	}, []);
+	document.title = 'loans Homepage';
 
 	return (
 		<React.Fragment>
 			<Helmet>
 				<meta name="author" content="Brian" />
 				<meta name="keywords" content="Loans, Finance, Money" />
+				<meta
+					name="description"
+					content="Putting together Kenya loans and related financial information and products together. A  tool that provides those searching for such content an easy way to compare and in-depth review."
+				/>
+				<meta
+					name="og:description"
+					content="Putting together Kenya loans and related financial information and products together. A  tool that provides those searching for such content an easy way to compare and in-depth review."
+				/>
 				<meta charSet="UTF-8" />
 				{/* <base href="https://loans.co.ke/" target="_blank" /> */}
-				
 			</Helmet>
 			{navigation.state === 'loading' ? (
 				<FullPageLoader />

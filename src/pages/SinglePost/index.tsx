@@ -44,13 +44,25 @@ const SinglePost = () => {
 		<React.Fragment>
 			{data ? (
 				<Helmet>
-					<meta property="og:title" content={data.article_title} />
+					<meta property="og:locale" content="en" />
 					<meta
 						property="og:description"
 						content={data.article_title}
 					/>
-					{/* <meta property="og:image" content={data?.featured_image} /> */}
-					<meta property="og:image" content="https://res.cloudinary.com/practicaldev/image/fetch/s--__dbnRkm--/c_imagga_scale,f_auto,fl_progressive,h_500,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/whms85xj936c018gbyw3.png"/>
+					<meta property="og:type" content="article" />
+					<meta
+						property="og:image"
+						content={
+							data.featured_image
+								? data.featured_image
+								: '/og-loans.jpg'
+						}
+					/>
+					<meta
+						property="og:url"
+						content={'https://loans.co.ke' + '/blog/' + data.slug}
+					/>
+					<meta property="og:title" content={data.article_title} />
 				</Helmet>
 			) : null}
 			<div>
