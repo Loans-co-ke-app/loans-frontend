@@ -59,6 +59,21 @@ const Homepage = () => {
 				/>
 				<meta charSet="UTF-8" />
 				{/* <base href="https://loans.co.ke/" target="_blank" /> */}
+				<meta
+					name="twitter:card"
+					content="Putting together Kenya loans and related financial information and products together. A  tool that provides those searching for such content an easy way to compare and in-depth review."
+				/>
+				<meta
+					name="twitter:title"
+					content="Putting together Kenya loans and related financial information and products together. A  tool that provides those searching for such content an easy way to compare and in-depth review."
+				/>
+				<meta
+					name="twitter:description"
+					content="Putting together Kenya loans and related financial information and products together. A  tool that provides those searching for such content an easy way to compare and in-depth review."
+				/>
+				<meta name="twitter:site" content="loans.co.ke" />
+				<meta name="twitter:image" content={'/og-loans.jpg'} />
+				<meta name="twitter:creator" content="loans.co.ke" />
 			</Helmet>
 			{navigation.state === 'loading' ? (
 				<FullPageLoader />

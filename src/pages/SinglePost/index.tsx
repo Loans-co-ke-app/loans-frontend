@@ -63,6 +63,23 @@ const SinglePost = () => {
 						content={'https://loans.co.ke' + '/blog/' + data.slug}
 					/>
 					<meta property="og:title" content={data.article_title} />
+					{/* -------------Twitter------------ */}
+					<meta name="twitter:card" content={data.article_title} />
+					<meta name="twitter:title" content={data.article_title} />
+					<meta
+						name="twitter:description"
+						content={data.article_title}
+					/>
+					<meta name="twitter:site" content="loans.co.ke" />
+					<meta
+						name="twitter:image"
+						content={
+							data.featured_image
+								? data.featured_image
+								: '/og-loans.jpg'
+						}
+					/>
+					<meta name="twitter:creator" content="loans.co.ke" />
 				</Helmet>
 			) : null}
 			<div>
